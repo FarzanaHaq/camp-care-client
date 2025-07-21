@@ -6,17 +6,17 @@ const Footer = () => {
            <footer className="footer sm:footer-horizontal bg-white text-neutral-content p-10 mt-20">
         <aside className="pl-14">
           <img
-            className="w-15 h-15 bg-white mt-1"
-            src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/shopping-basket-design-template-14904f1442021df3807b73464a4857b4_screen.jpg?ts=1635717553"
-            alt=""
+            className="w-30 h-30 bg-white mt-1"
+            src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
+            alt="logo"
           />
-          <p className="text-gray-600 text-[16px] font-medium">
+          <p className="text-gray-600 text-[16px] font-medium ml-3">
             Terms of Service
           </p>
-          <p className="text-gray-600 text-[16px] font-medium">
+          <p className="text-gray-600 text-[16px] font-medium ml-3">
             Privacy Policy
           </p>
-          <p className="text-gray-600 text-[16px] font-medium">
+          <p className="text-gray-600 text-[16px] font-medium ml-3">
             Contact Us
           </p>
         </aside>

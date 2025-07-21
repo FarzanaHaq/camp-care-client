@@ -10,12 +10,12 @@ import AddCamp from "../components/AddCamp/AddCamp";
 import Details from "../components/Details/Details";
 import Profile from "../components/Profile/Profile";
 import { ManageCamps } from "../components/ManageCamps/ManageCamps";
-import { OrganizerProfile } from "../components/OrganizerProfile/OrganizerProfile";
 import { ManageRegistered } from "../components/ManageRegistered/ManageRegistered";
 import { Analytics } from "../components/Analytics/Analytics";
 import { MyCamps } from "../components/MyCamps/MyCamps";
 import { PaymentHistory } from "../components/PaymentHistory/PaymentHistory";
 import { UpdateProfile } from "../components/UpdateProfile/UpdateProfile";
+import { UpdateCamp } from "../components/UpdateCamp/UpdateCamp";
 
 export const router = createBrowserRouter([
   {
@@ -54,15 +54,15 @@ export const router = createBrowserRouter([
         index: true,
         element: (
           <PrivateRoute>
-            <AddCamp />
+            <Profile />
           </PrivateRoute>
         ),
       },
       {
-        path: "profile",
+        path: "add-camp",
         element: (
           <PrivateRoute>
-            <Profile />
+            <AddCamp />
           </PrivateRoute>
         ),
       },
@@ -71,14 +71,6 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ManageCamps />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "organizer-profile",
-        element: (
-          <PrivateRoute>
-            <OrganizerProfile />
           </PrivateRoute>
         ),
       },
@@ -119,6 +111,16 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateProfile />
+          </PrivateRoute>
+        ),
+      },
+         {
+        path: "/dashboard/update-camp/:id",
+         loader: ({ params }) =>
+          fetch(`http://localhost:3000/camp-details/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateCamp />
           </PrivateRoute>
         ),
       },

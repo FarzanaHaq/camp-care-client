@@ -1,13 +1,13 @@
 import { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import useRole from "../hooks/useRole";
-import LoadingSpinner from "./Spinner/LoadingSpinner";
 import { Link } from "react-router";
+import { Spinner } from "../Spinner/Spinner";
 
 const Profile = () => {
   const { user } = use(AuthContext);
   const [role, isRoleLoading] = useRole();
-  if (isRoleLoading) return <LoadingSpinner />;
+  if (isRoleLoading) return <Spinner />;
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white shadow-lg rounded-2xl md:w-4/5 lg:w-3/5">

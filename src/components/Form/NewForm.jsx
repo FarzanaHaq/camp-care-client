@@ -20,7 +20,7 @@ const NewForm = ({ oneData }) => {
           Id: oneData._id,
         }
       );
-      console.log(data?.clientSecret)
+      console.log(data?.clientSecret);
       setClientSecret(data?.clientSecret);
     };
     getClientSecret();
@@ -49,10 +49,18 @@ const NewForm = ({ oneData }) => {
       console.log("[error]", error);
       setCardError(error.message);
       setProcessing(false);
+      return;
     } else {
       console.log("[PaymentMethod]", paymentMethod);
       setCardError(null);
     }
+    if (!clientSecret) {
+      setCardError("Payment is not ready yet. Please wait a moment.");
+      setProcessing(false);
+      return;
+    }
+
+    console.log(clientSecret);
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card,
@@ -62,24 +70,42 @@ const NewForm = ({ oneData }) => {
         },
       },
     });
+
     if (result?.error) {
       setCardError(result?.error?.message);
       return;
     }
-
-       if (result?.paymentIntent?.status === "succeeded") {
+    console.log(result?.paymentIntent?.status);
+    if (result?.paymentIntent?.status === "succeeded") {
       // save order data in db
+      const newData = {
+        transactionId: result?.paymentIntent?.id,
+        status: "paid",
+        feedback: true,
+      };
+      const paymentData = {
+        transactionId: result?.paymentIntent?.id,
+        name: oneData?.name,
+        fee: oneData?.price,
+        userName: oneData?.userName,
+        userEmail: oneData?.userEmail,
+        status: oneData?.status,
+        conformation: oneData?.conformatioon,
+      };
+
       const transactionId = result?.paymentIntent?.id;
-      const status = 'paid';
       try {
         const { data } = await axios.patch(
-         `http://localhost:3000/pay-second?id=${oneData._id}`,
-          transactionId, status
+          `http://localhost:3000/pay-second/${oneData._id}`,
+          newData
         );
         console.log(data);
-        if (data?.insertedId) {
-          toast.success("Order updated Successfully!");
-        }
+        toast.success("Payment Succesful", transactionId);
+        const { data: result } = await axios.post(
+          "http://localhost:3000/payment",
+          paymentData
+        );
+        console.log(result);
       } catch (err) {
         console.log(err);
       } finally {
@@ -108,13 +134,15 @@ const NewForm = ({ oneData }) => {
         }}
       />
       {cardError && <p className="text-red-500 mb-6">{cardError}</p>}
-      <button
-        className="bg-green-500 w-full py-2"
-        type="submit"
-        disabled={!stripe || processing}
-      >
-        {processing ? "Processing..." : `Pay ${oneData.price}$`}
-      </button>
+      <div className="flex justify-between">
+        <button
+          className="px-3 py-1 bg-green-400 rounded cursor-pointer text-white font-medium"
+          type="submit"
+          disabled={!stripe || processing}
+        >
+          {processing ? "Processing..." : `Pay ${oneData.price}$`}
+        </button>
+      </div>
     </form>
   );
 };

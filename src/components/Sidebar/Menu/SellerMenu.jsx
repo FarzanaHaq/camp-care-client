@@ -10,7 +10,7 @@ const SellerMenu = () => {
       <MenuItem
         icon={BsFillHouseAddFill}
         label="Add Camp"
-        address="/dashboard"
+        address="add-camp"
       />
       <MenuItem
         icon={FaTasks}
@@ -19,8 +19,8 @@ const SellerMenu = () => {
       />
       <MenuItem
         icon={CgProfile}
-        label="Organizer Profile"
-        address="organizer-profile"
+        label="Profile"
+        address="/dashboard"
       />
       <MenuItem
         icon={MdEventAvailable}

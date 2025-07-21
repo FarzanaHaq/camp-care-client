@@ -15,7 +15,7 @@ const CustomerMenu = () => {
       <MenuItem
         icon={FcSettings}
         label="Profile"
-        address="profile"
+        address="/dashboard"
       />
        <MenuItem
         icon={AiFillCreditCard}

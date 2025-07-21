@@ -58,7 +58,7 @@ const Header = () => {
             <div className="flex items-center">
               <img
                 className="w-15 h-15 bg-white mt-1"
-                src="https://media.istockphoto.com/id/1321617070/vector/health-medical-logo.jpg?s=612x612&w=0&k=20&c=sus8vhG3c__vCdvOBLDhuf2vPUgIAudIAeUBApU_7Ew="
+                src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
                 alt=""
               />
               <span className="text-2xl font-bold text-sky-400">CampCare</span>
@@ -95,7 +95,7 @@ const Header = () => {
               ) : (
                 <li>
                   <NavLink
-                    to={"/login"}
+                    to={"/register"}
                     className={({ isActive }) =>
                       isActive
                         ? "border-b-2 rounded-none text-sky-400 font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
@@ -125,8 +125,8 @@ const Header = () => {
                     referrerPolicy="no-referrer"
                     src={user && user.photoURL}
                     alt="profile"
-                    height="40"
-                    width="40"
+                    height="30"
+                    width="30"
                   />
                 </div>
               </div>

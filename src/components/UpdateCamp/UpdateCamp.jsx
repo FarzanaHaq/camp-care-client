@@ -3,17 +3,20 @@ import { useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { imageUpload } from "../../api/utils";
+
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { imageUpload } from "../../api/utils";
+import { useLoaderData } from "react-router";
 
-const AddCamp = () => {
+export const UpdateCamp = () => {
   const { user } = use(AuthContext);
+  const data = useLoaderData();
   const [isUploading, setIsUploading] = useState(false);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
- 
+
   async function handleFormSubmit(e) {
     e.preventDefault();
     setIsUploading(true);
@@ -23,8 +26,8 @@ const AddCamp = () => {
     const description = form?.description?.value;
     const price = form?.price?.value;
     const healthcare = form?.healthcare?.value;
-    //const image = form?.image?.files[0];
-    //const imageUrl = await imageUpload(image);
+    const image = form?.image?.files[0];
+    const imageUrl = image ? await imageUpload(image) : data.image;
 
     const formatDate = (date) => {
       const day = date.getDate();
@@ -49,18 +52,18 @@ const AddCamp = () => {
         description,
         price: parseFloat(price),
         healthcare,
-        image: uploadedImage,
+        image: imageUrl,
         date: newDate,
-        participantCount: 0,
       };
 
-      const { data } = await axios.post(
-        "http://localhost:3000/add-camp",
+      console.log(newPost);
+      const { data: responseData } = await axios.put(
+        `http://localhost:3000/update-camp/${data._id}`,
         newPost
       );
-      toast.success("Camp Added Successfully!");
+      toast.success("Camp Updated Successfully!");
       form.reset();
-      console.log(data);
+      console.log(responseData);
     } catch (err) {
       console.log(err);
     } finally {
@@ -68,20 +71,7 @@ const AddCamp = () => {
     }
   }
 
-    const handleImageUpload = async e => {
-    e.preventDefault()
-    const image = e.target.files[0]
-    console.log(image)
-    try {
-      // image url response from imgbb
-      const imageUrl = await imageUpload(image)
-      console.log(imageUrl)
-      setUploadedImage(imageUrl)
-    } catch (err) {
-      setImageUploadError('Image Upload Failed')
-      console.log(err)
-    }
-  }
+  const handleImageUpload = async (e) => {};
 
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
@@ -98,7 +88,7 @@ const AddCamp = () => {
                 name="name"
                 id="name"
                 type="text"
-                placeholder="Camp Name"
+                defaultValue={data.name}
                 required
               />
             </div>
@@ -112,7 +102,7 @@ const AddCamp = () => {
                 name="location"
                 id="location"
                 type="text"
-                placeholder="Location"
+                defaultValue={data.location}
                 required
               />
             </div>
@@ -124,7 +114,7 @@ const AddCamp = () => {
 
               <textarea
                 id="description"
-                placeholder="Write camp description here..."
+                defaultValue={data.description}
                 className="block rounded-md focus:lime-300 w-full h-37 px-4 py-3 text-gray-800  border-2 border-sky-300 bg-white focus:outline-lime-500 "
                 name="description"
               ></textarea>
@@ -143,7 +133,7 @@ const AddCamp = () => {
                   name="price"
                   id="price"
                   type="text"
-                  placeholder="Price"
+                  defaultValue={data.price}
                   required
                 />
               </div>
@@ -169,7 +159,7 @@ const AddCamp = () => {
                 name="healthcare"
                 id="healthcare"
                 type="text"
-                placeholder="Healthcare Professional Name"
+                defaultValue={data.healthcare}
                 required
               />
             </div>
@@ -179,7 +169,7 @@ const AddCamp = () => {
                 <div className="flex items-center gap-5 w-max mx-auto text-center">
                   <label>
                     <input
-                     onChange={handleImageUpload}
+                      onChange={handleImageUpload}
                       className="text-sm cursor-pointer w-36 hidden"
                       type="file"
                       name="image"
@@ -188,11 +178,10 @@ const AddCamp = () => {
                       hidden
                     />
                     <div className="bg-sky-300 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500">
-                     Upload
+                      Upload
                     </div>
-                  </label>   
-  
-                
+                  </label>
+
                   {uploadedImage && (
                     <div className="w-full">
                       <img
@@ -221,5 +210,3 @@ const AddCamp = () => {
     </div>
   );
 };
-
-export default AddCamp;

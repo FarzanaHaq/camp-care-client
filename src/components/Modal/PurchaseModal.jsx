@@ -4,45 +4,61 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "../Form/CheckoutForm";
 import { AuthContext } from "../../Context/AuthContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const stripePromise = loadStripe(
   "pk_test_51Rl1cFRqsLeiCeWjk2BA4SQzSIKWNTVlLWuK4aZvE287GtLFQu4H2clGWiWkhdwuoscvW0ihrbICeje0ovgSc5c500uzgiGNZq"
 );
 
 const PurchaseModal = ({ closeModal, isOpen, camps, user }) => {
+  const [processing, setProcessing] = useState(false);
+  const { name, location, price, healthcare, date, participantCount } = camps;
+  const [isAge, setIsAge] = useState("");
+  const [isNumber, setIsNumber] = useState("");
+  const [isGender, setIsGender] = useState("");
+  const [isEmergency, setIsEmergency] = useState("");
 
-    const {
-      name,
-      location,
-      price,
-      healthcare,
-      date,
-      participantCount,
-    } = camps;
-    const [isAge, setIsAge] = useState("");
-    const [isNumber, setIsNumber] = useState("");
-    const [isGender, setIsGender] = useState("");
-    const [isEmergency, setIsEmergency] = useState("");
-  
-    const newData = {
-      name,
-      location,
-      price,
-      date,
-      healthcare,
-      participantCount,
-      campId: camps._id,
-      age: isAge,
-      phone: isNumber,
-      gender: isGender,
-      emergencyPhone: isEmergency,
-      userName: user?.displayName,
-      userEmail: user?.email
-    };
-
+  const newData = {
+    name,
+    location,
+    price,
+    date,
+    healthcare,
+    participantCount,
+    campId: camps._id,
+    age: isAge,
+    phone: isNumber,
+    gender: isGender,
+    emergencyPhone: isEmergency,
+    userName: user?.displayName,
+    userEmail: user?.email,
+    status: "unpaid",
+    conformatioon: "pending"
+  };
+  async function payLater() {
+    setProcessing(true);
+    try {
+      const { data } = await axios.post("http://localhost:3000/order", newData);
+      console.log(data);
+      if (data?.insertedId) {
+        toast.success("Joined Successfully!");
+      }
+      const { data: result } = await axios.patch(
+        `http://localhost:3000/quantity-update/${camps?._id}`,
+        newData
+      );
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setProcessing(false);
+      closeModal();
+    }
+  }
 
   return (
-  <Dialog
+    <Dialog
       open={isOpen}
       as="div"
       className="relative z-10 focus:outline-none "
@@ -131,15 +147,10 @@ const PurchaseModal = ({ closeModal, isOpen, camps, user }) => {
                 className="input w-full"
                 placeholder="Enter your emergency phone number"
               />
-              <Elements stripe={stripePromise}>
-                <CheckoutForm
-                  price={price}
-                  closeModal={closeModal}
-                  camps={camps}
-                  user={user}
-                  newData={newData}
-                />
-              </Elements>
+              <button onClick={payLater} className="w-full bg-sky-300 mt-5 text-white py-2 font-medium">
+                {" "}
+                {processing ? "Processing..." : "Join"}
+              </button>
             </div>
           </DialogPanel>
         </div>

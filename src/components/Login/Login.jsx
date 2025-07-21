@@ -1,40 +1,37 @@
-import { use } from "react";
-import { Link, useLocation } from "react-router";
-import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../../Context/AuthContext";
 import { saveUserInDb } from "../../api/utils";
+import { useContext } from "react";
 
 const Login = () => {
-  const { signInUser, googleSignIn } = use(AuthContext);
+  const { signInUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  function handleLogin(e) {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+  const onSubmit = (data) => {
+    const { email, password } = data;
     signInUser(email, password)
       .then((result) => {
-        console.log(result);
         const userData = {
           name: result?.user?.displayName,
           email: result?.user?.email,
           image: result?.user?.photoURL,
         };
         saveUserInDb(userData)
-          .then((data) => console.log(data))
-          .catch((error) => {
-            console.log(error.message);
-          });
-
-        navigate(location?.state || "/");
+          .then(() => navigate(location?.state || "/"))
+          .catch((err) => console.error(err.message));
       })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
-  function handleGoogle() {
+      .catch((err) => console.error(err.message));
+  };
+
+  const handleGoogle = () => {
     googleSignIn()
       .then((result) => {
         const userData = {
@@ -43,16 +40,11 @@ const Login = () => {
           image: result?.user?.photoURL,
         };
         saveUserInDb(userData)
-          .then((data) => console.log(data))
-          .catch((error) => {
-            console.log(error.message);
-          });
-        navigate(location?.state || "/");
+          .then(() => navigate(location?.state || "/"))
+          .catch((err) => console.error(err.message));
       })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
+      .catch((err) => console.error(err.message));
+  };
 
   return (
     <div>
@@ -61,28 +53,42 @@ const Login = () => {
         <title>Login</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
+
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl flex justify-center mx-auto mt-20">
         <div className="card-body">
-          <form onSubmit={handleLogin} className="fieldset">
+          <form onSubmit={handleSubmit(onSubmit)} className="fieldset">
             <label className="label">Email</label>
             <input
-              name="email"
               type="email"
+              {...register("email", { required: "Email is required" })}
               className="input"
               placeholder="Email"
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+            )}
+
             <label className="label">Password</label>
             <input
-              name="password"
               type="password"
+              {...register("password", { required: "Password is required" })}
               className="input"
               placeholder="Password"
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn bg-sky-800 text-white mt-4">Login</button>
+            <button type="submit" className="btn bg-sky-800 text-white mt-4">
+              Login
+            </button>
           </form>
+
           <button
             onClick={handleGoogle}
             className="btn bg-white text-black border-[#e5e5e5]"
@@ -116,8 +122,9 @@ const Login = () => {
             </svg>
             Login with Google
           </button>
+
           <p className="text-center mt-2">
-            New to this site?<Link to={"/register"}>Please Register</Link>
+            New to this site? <Link to={"/register"}>Please Register</Link>
           </p>
         </div>
       </div>
@@ -126,3 +133,4 @@ const Login = () => {
 };
 
 export default Login;
+
