@@ -6,7 +6,6 @@ import { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { saveUserInDb } from "../../api/utils";
 
-
 const Register = () => {
   const { createUser, googleSignIn, updateUser } = use(AuthContext);
   const navigate = useNavigate();
@@ -69,7 +68,9 @@ const Register = () => {
               className="input"
               placeholder="Name"
             />
-            {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-red-500">{errors.name.message}</p>
+            )}
 
             {/* Email */}
             <label className="label">Email</label>
@@ -82,7 +83,9 @@ const Register = () => {
               type="email"
               placeholder="Email"
             />
-            {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-red-500">{errors.email.message}</p>
+            )}
 
             {/* Password */}
             <label className="label">Password</label>
@@ -91,15 +94,19 @@ const Register = () => {
                 required: "Password is required",
                 minLength: { value: 6, message: "Minimum 6 characters" },
                 validate: {
-                  hasUppercase: (v) => /[A-Z]/.test(v) || "Must include an uppercase letter",
-                  hasLowercase: (v) => /[a-z]/.test(v) || "Must include a lowercase letter",
+                  hasUppercase: (v) =>
+                    /[A-Z]/.test(v) || "Must include an uppercase letter",
+                  hasLowercase: (v) =>
+                    /[a-z]/.test(v) || "Must include a lowercase letter",
                 },
               })}
               className="input"
               type="password"
               placeholder="Password"
             />
-            {errors.password && <p className="text-red-500">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-red-500">{errors.password.message}</p>
+            )}
 
             {/* Photo */}
             <label className="label">Photo URL</label>
@@ -108,12 +115,16 @@ const Register = () => {
               className="input"
               placeholder="Photo URL"
             />
-            {errors.photo && <p className="text-red-500">{errors.photo.message}</p>}
+            {errors.photo && (
+              <p className="text-red-500">{errors.photo.message}</p>
+            )}
 
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn bg-sky-800 text-white mt-4 w-full">Register</button>
+            <button className="btn bg-sky-800 text-white mt-4 w-full">
+              Register
+            </button>
           </form>
 
           {/* Google Sign In */}
@@ -130,10 +141,22 @@ const Register = () => {
             >
               <g>
                 <path fill="#fff" d="M0 0h512v512H0z" />
-                <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341" />
-                <path fill="#4285f4" d="M386 400a140 175 0 0053-179H260v74h102q-7 37-38 57" />
-                <path fill="#fbbc02" d="M90 341a208 200 0 010-171l63 49q-12 37 0 73" />
-                <path fill="#ea4335" d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55" />
+                <path
+                  fill="#34a853"
+                  d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+                />
+                <path
+                  fill="#4285f4"
+                  d="M386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+                />
+                <path
+                  fill="#fbbc02"
+                  d="M90 341a208 200 0 010-171l63 49q-12 37 0 73"
+                />
+                <path
+                  fill="#ea4335"
+                  d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+                />
               </g>
             </svg>
             Login with Google
@@ -154,4 +177,3 @@ const Register = () => {
 };
 
 export default Register;
-

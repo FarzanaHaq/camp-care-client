@@ -13,7 +13,7 @@ export const ManageRegistered = () => {
   const rowsPerPage = 10;
 
   useEffect(() => {
-    fetch("http://localhost:3000/all-registered-camps", {
+    fetch("https://camp-server-lake.vercel.app/all-registered-camps", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -28,10 +28,10 @@ export const ManageRegistered = () => {
     };
     try {
       const { data } = await axios.patch(
-        `http://localhost:3000/confirm/${id}`,
+        `https://camp-server-lake.vercel.app/confirm/${id}`,
         newData
       );
-      console.log(data);
+    
       // Optionally update UI here, e.g., refetch or update local state
       setMyData((prev) =>
         prev.map((item) =>
@@ -54,7 +54,7 @@ export const ManageRegistered = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete-camp/${id}`, {
+        fetch(`https://camp-server-lake.vercel.app/delete-camp/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

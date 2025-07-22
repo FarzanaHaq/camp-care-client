@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router";
-
 
 const Available = () => {
   const [data, setData] = useState([]);
@@ -9,7 +9,7 @@ const Available = () => {
   const [columns, setColumns] = useState(3);
 
   useEffect(() => {
-    fetch("http://localhost:3000/camps")
+    fetch("https://camp-server-lake.vercel.app/camps")
       .then((res) => res.json())
       .then((fetchedData) => {
         setData(fetchedData);
@@ -34,6 +34,9 @@ const Available = () => {
 
   return (
     <div className="px-4 mt-16 mb-20">
+      <Helmet>
+        <title>Available Camps</title>
+      </Helmet>
       <h1 className="text-center text-3xl font-bold text-sky-500 mb-6">
         All Medical Camps
       </h1>
@@ -112,7 +115,6 @@ const Available = () => {
                     Join Camp
                   </button>
                 </Link>
-               
               </div>
             </div>
           </div>

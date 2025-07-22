@@ -12,7 +12,7 @@ export const ManageCamps = () => {
   const rowsPerPage = 10;
 
   useEffect(() => {
-    fetch("http://localhost:3000/camps")
+    fetch("https://camp-server-lake.vercel.app/camps")
       .then((res) => res.json())
       .then((data) => {
         setMyData(data);
@@ -30,7 +30,7 @@ export const ManageCamps = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete-camp/${id}`, {
+        fetch(`https://camp-server-lake.vercel.app/delete-camp/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

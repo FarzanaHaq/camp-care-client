@@ -29,17 +29,27 @@ export const MyCamps = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:3000/all-register?email=${user?.email}`)
+    fetch(`https://camp-server-lake.vercel.app/all-register?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyData(data);
       });
   }, [user?.email]);
 
-  const filteredData = myData.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.status.toLowerCase().includes(searchTerm.toLowerCase()) 
+  function refetch() {
+    if (!user?.email) return;
+    fetch(`https://camp-server-lake.vercel.app/all-register?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMyData(data);
+      });
+  }
+
+  const filteredData = myData.filter(
+    (item) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.status.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const totalItems = filteredData.length;
@@ -51,7 +61,7 @@ export const MyCamps = () => {
   );
 
   async function handleClick(params) {
-    const res = await fetch(`http://localhost:3000/pay-register?id=${params}`);
+    const res = await fetch(`https://camp-server-lake.vercel.app/pay-register?id=${params}`);
     const data = await res.json();
     setOneData(data[0]);
   }
@@ -67,7 +77,7 @@ export const MyCamps = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/delete-my-camps/${params}`, {
+        fetch(`https://camp-server-lake.vercel.app/delete-my-camps/${params}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -91,7 +101,7 @@ export const MyCamps = () => {
     };
     setLoading(false);
     const { data } = await axios.post(
-      "http://localhost:3000/feedback",
+      "https://camp-server-lake.vercel.app/feedback",
       feedback
     );
     toast.success("Feedback submitted successfully!");
@@ -207,7 +217,7 @@ export const MyCamps = () => {
       <dialog id="my_modal_1" className="modal bg-white">
         <div className="modal-box bg-white">
           <Elements stripe={stripePromise}>
-            <NewForm oneData={oneData} />
+            <NewForm oneData={oneData} refetch={refetch} />
           </Elements>
           <div className="modal-action">
             <form method="dialog">

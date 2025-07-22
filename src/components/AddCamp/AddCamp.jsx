@@ -55,12 +55,12 @@ const AddCamp = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:3000/add-camp",
+        "https://camp-server-lake.vercel.app/add-camp",
         newPost
       );
       toast.success("Camp Added Successfully!");
       form.reset();
-      console.log(data);
+     
     } catch (err) {
       console.log(err);
     } finally {
@@ -71,11 +71,11 @@ const AddCamp = () => {
     const handleImageUpload = async e => {
     e.preventDefault()
     const image = e.target.files[0]
-    console.log(image)
+   
     try {
       // image url response from imgbb
       const imageUrl = await imageUpload(image)
-      console.log(imageUrl)
+    
       setUploadedImage(imageUrl)
     } catch (err) {
       setImageUploadError('Image Upload Failed')

@@ -11,11 +11,11 @@ export const UpdateProfile = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const image =  e.target?.image?.files[0];
-    const imageUrl = await imageUpload(image);
+    const imageUrl = image ? await imageUpload(image) : user?.image;
 
     updateUser({ displayName: name, photoURL: imageUrl })
       .then((result) => {
-        console.log(result);
+     
 
         const userData = {
           name,

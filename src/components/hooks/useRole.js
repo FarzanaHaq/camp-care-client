@@ -12,7 +12,7 @@ const useRole = () => {
   useEffect(() => {
     const fetchUserRole = async () => {
       const { data } = await axios(
-        `http://localhost:3000/user/role/${user?.email}`
+        `https://camp-server-lake.vercel.app/user/role/${user?.email}`
       )
 
       setRole(data?.role)

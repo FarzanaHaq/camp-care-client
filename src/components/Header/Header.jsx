@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import { Link } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
+import avatarImg from '../../assets/placeholder.jpg'
 
 const Header = () => {
   const { signOutUser, user } = use(AuthContext);
@@ -123,10 +124,10 @@ const Header = () => {
                   <img
                     className="rounded-full"
                     referrerPolicy="no-referrer"
-                    src={user && user.photoURL}
+                      src={user && user.photoURL ? user.photoURL : avatarImg}
                     alt="profile"
-                    height="30"
-                    width="30"
+                    height="40"
+                    width="40"
                   />
                 </div>
               </div>

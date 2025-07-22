@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const CheckoutForm = ({ price, closeModal, camps, user , newData}) => {
+const CheckoutForm = ({ price, closeModal, camps, user, newData }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState(null);
@@ -14,7 +14,7 @@ const CheckoutForm = ({ price, closeModal, camps, user , newData}) => {
   useEffect(() => {
     const getClientSecret = async () => {
       const { data } = await axios.post(
-        "http://localhost:3000/create-payment-intent",
+        "https://camp-server-lake.vercel.app/create-payment-intent",
         {
           price: camps?.price,
           campId: camps._id,
@@ -50,7 +50,7 @@ const CheckoutForm = ({ price, closeModal, camps, user , newData}) => {
       setProcessing(false);
       return;
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+    
       setCardError(null);
     }
 
@@ -70,21 +70,20 @@ const CheckoutForm = ({ price, closeModal, camps, user , newData}) => {
     if (result?.paymentIntent?.status === "succeeded") {
       // save order data in db
       newData.transactionId = result?.paymentIntent?.id;
-      newData.status = 'paid'
+      newData.status = "paid";
       try {
         const { data } = await axios.post(
-          "http://localhost:3000/order",
+          "https://camp-server-lake.vercel.app/order",
           newData
         );
-        console.log(data);
+
         if (data?.insertedId) {
           toast.success("Order Placed Successfully!");
         }
         const { data: result } = await axios.patch(
-          `http://localhost:3000/quantity-update/${camps?._id}`,
+          `https://camp-server-lake.vercel.app/quantity-update/${camps?._id}`,
           newData
         );
-        console.log(result);
       } catch (err) {
         console.log(err);
       } finally {
@@ -96,19 +95,20 @@ const CheckoutForm = ({ price, closeModal, camps, user , newData}) => {
   };
 
   async function payLater() {
-      setProcessing(true);
+    setProcessing(true);
     try {
-       newData.status = 'unpaid'
-      const { data } = await axios.post("http://localhost:3000/order", newData);
-      console.log(data);
+      newData.status = "unpaid";
+      const { data } = await axios.post(
+        "https://camp-server-lake.vercel.app/order",
+        newData
+      );
       if (data?.insertedId) {
         toast.success("Order Placed Successfully!");
       }
       const { data: result } = await axios.patch(
-        `http://localhost:3000/quantity-update/${camps?._id}`,
+        `https://camp-server-lake.vercel.app/quantity-update/${camps?._id}`,
         newData
       );
-      console.log(result);
     } catch (err) {
       console.log(err);
     } finally {

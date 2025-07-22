@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
       {
         path: "details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/camp-details/${params.id}`),
+          fetch(`https://camp-server-lake.vercel.app/camp-details/${params.id}`),
         element: (
           <PrivateRoute>
             <Details></Details>
@@ -117,7 +117,7 @@ export const router = createBrowserRouter([
          {
         path: "/dashboard/update-camp/:id",
          loader: ({ params }) =>
-          fetch(`http://localhost:3000/camp-details/${params.id}`),
+          fetch(`https://camp-server-lake.vercel.app/camp-details/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateCamp />

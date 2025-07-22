@@ -26,8 +26,8 @@ export const UpdateCamp = () => {
     const description = form?.description?.value;
     const price = form?.price?.value;
     const healthcare = form?.healthcare?.value;
-    const image = form?.image?.files[0];
-    const imageUrl = image ? await imageUpload(image) : data.image;
+    //const image = form?.image?.files[0];
+    //const imageUrl = image ? await imageUpload(image) : data.image;
 
     const formatDate = (date) => {
       const day = date.getDate();
@@ -52,26 +52,42 @@ export const UpdateCamp = () => {
         description,
         price: parseFloat(price),
         healthcare,
-        image: imageUrl,
+        image: uploadedImage,
         date: newDate,
       };
 
-      console.log(newPost);
+    
+
       const { data: responseData } = await axios.put(
-        `http://localhost:3000/update-camp/${data._id}`,
+        `https://camp-server-lake.vercel.app/update-camp/${data._id}`,
         newPost
       );
       toast.success("Camp Updated Successfully!");
       form.reset();
-      console.log(responseData);
+    
     } catch (err) {
       console.log(err);
     } finally {
       setIsUploading(false);
     }
   }
-
-  const handleImageUpload = async (e) => {};
+  
+  const handleImageUpload = async (e) => {
+    e.preventDefault();
+    const image = e.target.files[0];
+ 
+    if (image) {
+      try {
+        // image url response from imgbb
+        const imageUrl = await imageUpload(image);
+      
+        setUploadedImage(imageUrl);
+      } catch (err) {
+        setImageUploadError("Image Upload Failed");
+        console.log(err);
+      }
+    }
+  };
 
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">

@@ -1,13 +1,41 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useParams } from "react-router";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { ToastContainer } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-toastify/dist/ReactToastify.css";
 import PurchaseModal from "../Modal/PurchaseModal";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { Spinner } from "../Spinner/Spinner";
 
 const Details = () => {
-  const camps = useLoaderData();
+  const { id } = useParams();
+  const {
+    data: camps,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["camps", id],
+    queryFn: async () => {
+      const { data } = await axios.get(
+        `https://camp-server-lake.vercel.app/camp-details/${id}`
+      );
+      return data;
+    },
+  });
+
+  const { user } = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  if (isLoading) {
+    return <Spinner></Spinner>;
+  }
+
   const {
     name,
     location,
@@ -18,12 +46,6 @@ const Details = () => {
     date,
     participantCount,
   } = camps;
-  const { user } = useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -79,6 +101,7 @@ const Details = () => {
               camps={camps}
               closeModal={closeModal}
               isOpen={isOpen}
+              refetch={refetch}
             />
           </div>
         </div>

@@ -5,7 +5,7 @@ import { Link } from "react-router";
 export const ShowCamps = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/camps")
+    fetch("https://camp-server-lake.vercel.app/camps")
       .then((response) => response.json())
       .then((fetchedData) => {
         setData(fetchedData);

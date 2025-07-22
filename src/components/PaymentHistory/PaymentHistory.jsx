@@ -13,7 +13,7 @@ export const PaymentHistory = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:3000/all-payment?email=${user?.email}`, {
+    fetch(`https://camp-server-lake.vercel.app/all-payment?email=${user?.email}`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -46,16 +46,16 @@ export const PaymentHistory = () => {
 
   return (
     <div className="mx-auto mt-10 max-w-7xl px-4 text-black">
-     <div className="flex justify-center">
-       {/* Search Input */}
-      <input
-        type="text"
-        placeholder="Search by title, name, status or confirmation..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 mb-5"
-      />
-     </div>
+      <div className="flex justify-center">
+        {/* Search Input */}
+        <input
+          type="text"
+          placeholder="Search by title, name, status or confirmation..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 mb-5"
+        />
+      </div>
 
       {filteredData.length > 0 ? (
         <>
@@ -76,6 +76,7 @@ export const PaymentHistory = () => {
                   <th>Title</th>
                   <th>Fee</th>
                   <th>Name</th>
+                  <th>Transaction Id</th>
                   <th>Payment</th>
                   <th>Conformation</th>
                 </tr>
@@ -86,6 +87,7 @@ export const PaymentHistory = () => {
                     <td>{data.name}</td>
                     <td>{data.fee}$</td>
                     <td>{data.userName}</td>
+                    <td>{data.transactionId}</td>
                     <td>{data.status}</td>
                     <td>{data.conformation}</td>
                   </tr>
@@ -137,4 +139,3 @@ export const PaymentHistory = () => {
     </div>
   );
 };
-

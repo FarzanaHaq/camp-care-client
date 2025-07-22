@@ -17,12 +17,12 @@ export const Analytics = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:3000/all-register?email=${user?.email}`, {
+    fetch(`https://camp-server-lake.vercel.app/all-register?email=${user?.email}`, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+     
         setMyData(data);
       });
   }, [user?.email]);

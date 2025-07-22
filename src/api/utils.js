@@ -11,21 +11,17 @@ export const imageUpload = async (imageData) => {
   return data?.data?.display_url;
 };
 
-export const saveUserInDb = async user => {
-  console.log(user)
+export const saveUserInDb = async (user) => {
   const { data } = await axios.post(
-    "http://localhost:3000/user",
+    "https://camp-server-lake.vercel.app/user",
     user
-  )
-  return data
-}
-export const updateUserInDb = async user => {
-  console.log(user)
+  );
+  return data;
+};
+export const updateUserInDb = async (user) => {
   const { data } = await axios.patch(
-    "http://localhost:3000/update-user",
+    "https://camp-server-lake.vercel.app/update-user",
     user
-  )
-  return data
-}
-
-
+  );
+  return data;
+};

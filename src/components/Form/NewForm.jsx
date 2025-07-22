@@ -3,24 +3,26 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
-const NewForm = ({ oneData }) => {
+const NewForm = ({ oneData, refetch }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
+  const [paymentBtn, setPaymentBtn] = useState(false);
 
   useEffect(() => {
     const getClientSecret = async () => {
       const { data } = await axios.post(
-        "http://localhost:3000/create-payment-new",
+        "https://camp-server-lake.vercel.app/create-payment-new",
         {
           price: oneData?.price,
           Id: oneData._id,
         }
       );
-      console.log(data?.clientSecret);
+   
       setClientSecret(data?.clientSecret);
     };
     getClientSecret();
@@ -51,7 +53,7 @@ const NewForm = ({ oneData }) => {
       setProcessing(false);
       return;
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+   
       setCardError(null);
     }
     if (!clientSecret) {
@@ -60,7 +62,7 @@ const NewForm = ({ oneData }) => {
       return;
     }
 
-    console.log(clientSecret);
+
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card,
@@ -75,7 +77,7 @@ const NewForm = ({ oneData }) => {
       setCardError(result?.error?.message);
       return;
     }
-    console.log(result?.paymentIntent?.status);
+  
     if (result?.paymentIntent?.status === "succeeded") {
       // save order data in db
       const newData = {
@@ -89,23 +91,24 @@ const NewForm = ({ oneData }) => {
         fee: oneData?.price,
         userName: oneData?.userName,
         userEmail: oneData?.userEmail,
-        status: oneData?.status,
+        status: "paid",
         conformation: oneData?.conformatioon,
       };
 
       const transactionId = result?.paymentIntent?.id;
       try {
         const { data } = await axios.patch(
-          `http://localhost:3000/pay-second/${oneData._id}`,
+          `https://camp-server-lake.vercel.app/pay-second/${oneData._id}`,
           newData
         );
-        console.log(data);
-        toast.success("Payment Succesful", transactionId);
+
+       Swal.fire("Payment Succesful! Your id is: ", transactionId);
         const { data: result } = await axios.post(
-          "http://localhost:3000/payment",
+          "https://camp-server-lake.vercel.app/payment",
           paymentData
         );
-        console.log(result);
+
+        refetch();
       } catch (err) {
         console.log(err);
       } finally {
@@ -134,9 +137,9 @@ const NewForm = ({ oneData }) => {
         }}
       />
       {cardError && <p className="text-red-500 mb-6">{cardError}</p>}
-      <div className="flex justify-between">
+      <div className="">
         <button
-          className="px-3 py-1 bg-green-400 rounded cursor-pointer text-white font-medium"
+          className="px-3 py-1 bg-green-400 rounded cursor-pointer text-white font-medium w-full mt-10"
           type="submit"
           disabled={!stripe || processing}
         >

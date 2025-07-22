@@ -1,17 +1,9 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useState } from "react";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "../Form/CheckoutForm";
-import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const stripePromise = loadStripe(
-  "pk_test_51Rl1cFRqsLeiCeWjk2BA4SQzSIKWNTVlLWuK4aZvE287GtLFQu4H2clGWiWkhdwuoscvW0ihrbICeje0ovgSc5c500uzgiGNZq"
-);
-
-const PurchaseModal = ({ closeModal, isOpen, camps, user }) => {
+const PurchaseModal = ({ closeModal, isOpen, camps, user, refetch }) => {
   const [processing, setProcessing] = useState(false);
   const { name, location, price, healthcare, date, participantCount } = camps;
   const [isAge, setIsAge] = useState("");
@@ -34,21 +26,22 @@ const PurchaseModal = ({ closeModal, isOpen, camps, user }) => {
     userName: user?.displayName,
     userEmail: user?.email,
     status: "unpaid",
-    conformatioon: "pending"
+    conformatioon: "pending",
   };
   async function payLater() {
     setProcessing(true);
     try {
-      const { data } = await axios.post("http://localhost:3000/order", newData);
-      console.log(data);
+      const { data } = await axios.post("https://camp-server-lake.vercel.app/order", newData);
+    
       if (data?.insertedId) {
         toast.success("Joined Successfully!");
       }
       const { data: result } = await axios.patch(
-        `http://localhost:3000/quantity-update/${camps?._id}`,
+        `https://camp-server-lake.vercel.app/quantity-update/${camps?._id}`,
         newData
       );
-      console.log(result);
+    
+      refetch();
     } catch (err) {
       console.log(err);
     } finally {
@@ -147,7 +140,10 @@ const PurchaseModal = ({ closeModal, isOpen, camps, user }) => {
                 className="input w-full"
                 placeholder="Enter your emergency phone number"
               />
-              <button onClick={payLater} className="w-full bg-sky-300 mt-5 text-white py-2 font-medium">
+              <button
+                onClick={payLater}
+                className="w-full bg-sky-300 mt-5 text-white py-2 font-medium"
+              >
                 {" "}
                 {processing ? "Processing..." : "Join"}
               </button>

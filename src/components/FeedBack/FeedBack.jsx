@@ -4,7 +4,7 @@ export const FeedBack = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/all-feedback")
+    fetch("https://camp-server-lake.vercel.app/all-feedback")
       .then((response) => response.json())
       .then((fetchedData) => {
         setData(fetchedData);

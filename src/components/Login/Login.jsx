@@ -49,9 +49,7 @@ const Login = () => {
   return (
     <div>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>Login</title>
-        <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl flex justify-center mx-auto mt-20">
@@ -65,7 +63,9 @@ const Login = () => {
               placeholder="Email"
             />
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
             )}
 
             <label className="label">Password</label>
@@ -133,4 +133,3 @@ const Login = () => {
 };
 
 export default Login;
-

@@ -5,7 +5,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import { BsGraphUp } from "react-icons/bs";
 import MenuItem from "./Menu/MenuItem";
 import AdminMenu from "./Menu/AdminMenu";
-import { Link } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import SellerMenu from "./Menu/SellerMenu";
 import CustomerMenu from "./Menu/CustomerMenu";
 import { AuthContext } from "../../Context/AuthContext";
@@ -15,6 +15,7 @@ const Sidebar = () => {
   const { signOutUser } = use(AuthContext);
   const [isActive, setActive] = useState(false);
   const [role, isRoleLoading] = useRole();
+  const navigate = useNavigate();
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -79,7 +80,10 @@ const Sidebar = () => {
         <div>
           <hr />
           <button
-            onClick={() => signOutUser()}
+            onClick={() => {
+              signOutUser();
+              navigate("/");
+            }}
             className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
           >
             <GrLogout className="w-5 h-5" />
