@@ -24,7 +24,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
+      <div className="bg-white text-gray-800 flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer p-4 font-bold">
             <Link to="/">
@@ -49,14 +49,14 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-white w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-3 shadow-lg rounded-lg justify-center items-center bg-white mx-auto">
-              <Link to="/">
+            <Link to={"/"}>
+              <div className="flex justify-center items-center pr-3">
                 <img
                   // className='hidden md:block'
                   src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
@@ -64,12 +64,14 @@ const Sidebar = () => {
                   width="80"
                   height="80"
                 />
-              </Link>
-            </div>
+
+                <h1 className="text-2xl font-bold text-[#031B4E]">CampCare</h1>
+              </div>
+            </Link>
           </div>
 
           {/* Nav Items */}
-          <div className="flex flex-col justify-between flex-1 mt-6">
+          <div className="flex flex-col justify-between flex-1 mt-3">
             <nav>
               {role === "organizer" && <SellerMenu />}
               {role === "participant" && <CustomerMenu />}
@@ -78,7 +80,6 @@ const Sidebar = () => {
         </div>
 
         <div>
-          <hr />
           <button
             onClick={() => {
               signOutUser();

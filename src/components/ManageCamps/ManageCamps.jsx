@@ -3,6 +3,8 @@ import { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 export const ManageCamps = () => {
   const { user } = use(AuthContext);
@@ -66,112 +68,116 @@ export const ManageCamps = () => {
   }, [searchTerm]);
 
   return (
-    <div className="mx-auto mt-10 text-black max-w-7xl px-4">
-      {/* Search Input */}
-      <div className="flex justify-center">
-        {" "}
-        <input
-          type="text"
-          placeholder="Search camps by name, date, or healthcare professional..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 mb-5"
-        />
-      </div>
-
-      {filteredData.length > 0 ? (
-        <>
-          <div className="overflow-x-auto py-5">
-            {/* Showing Text */}
-            <div className="text-gray-600 text-sm mb-4 ml-4">
-              Showing{" "}
-              <span className="font-semibold">
-                {Math.min(indexOfFirstRow + 1, filteredData.length)}–
-                {Math.min(indexOfLastRow, filteredData.length)}
-              </span>{" "}
-              of <span className="font-semibold">{filteredData.length}</span>
-            </div>
-
-            {/* Table */}
-            <table className="table w-full">
-              <thead>
-                <tr className="text-gray-800">
-                  <th>Title</th>
-                  <th>Location</th>
-                  <th>Date</th>
-                  <th>Healthcare Professional</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentRows.map((data) => (
-                  <tr key={data._id}>
-                    <td>{data.name}</td>
-                    <td>{data.location}</td>
-                    <td>{data.date}</td>
-                    <td>{data.healthcare}</td>
-                    <td>
-                      <Link to={`/dashboard/update-camp/${data._id}`}>
-                        <button className="bg-sky-400 py-2 px-5 rounded-lg text-[16px] cursor-pointer hover:bg-sky-800 text-white font-medium">
-                          Edit
-                        </button>
-                      </Link>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(data._id)}
-                        className="bg-red-400 py-2 px-5 rounded-lg text-[16px] cursor-pointer hover:bg-red-800 text-white font-medium"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            {/* Pagination Controls */}
-            <div className="flex justify-center mt-6 items-center gap-2 flex-wrap">
-              <button
-                className="btn join-item"
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              >
-                Prev
-              </button>
-
-              {[...Array(totalPages)].map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentPage(idx + 1)}
-                  className={`btn join-item ${
-                    currentPage === idx + 1
-                      ? "btn-active bg-sky-600 text-white"
-                      : ""
-                  }`}
-                >
-                  {idx + 1}
-                </button>
-              ))}
-
-              <button
-                className="btn join-item"
-                disabled={currentPage === totalPages}
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="text-center text-sky-800 p-20 font-bold text-2xl">
-          No camps found matching your search.
+    <div className="bg-[#F2F4F7]">
+      <div className="mx-auto pt-10 text-black max-w-7xl px-4">
+        {/* Search Input */}
+        <div className="flex justify-center">
+          {" "}
+          <input
+            type="text"
+            placeholder="Search camps by name, date, or healthcare professional..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 mb-5"
+          />
         </div>
-      )}
+
+        {filteredData.length > 0 ? (
+          <>
+            <div className="overflow-x-auto py-5">
+              {/* Showing Text */}
+              <div className="text-gray-600 text-sm mb-4 ml-4">
+                Showing{" "}
+                <span className="font-semibold">
+                  {Math.min(indexOfFirstRow + 1, filteredData.length)}–
+                  {Math.min(indexOfLastRow, filteredData.length)}
+                </span>{" "}
+                of <span className="font-semibold">{filteredData.length}</span>
+              </div>
+
+              {/* Table */}
+              <table className="table w-full">
+                <thead>
+                  <tr className="text-gray-800 border-b-2 border-gray-200">
+                    <th>Title</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Healthcare Professional</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentRows.map((data) => (
+                    <tr key={data._id} className="border-b-2 border-gray-200">
+                      <td>{data.name}</td>
+                      <td>{data.location}</td>
+                      <td>{data.date}</td>
+                      <td>{data.healthcare}</td>
+                      <td>
+                        <Link to={`/dashboard/update-camp/${data._id}`}>
+                          <button className=" py-2 pl-2 rounded-lg text-[20px] cursor-pointer text-[#031B4E] font-medium">
+                            <FaEdit />
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(data._id)}
+                          className="py-2 px-5 rounded-lg text-[25px] cursor-pointer text-[#031B4E]  font-medium"
+                        >
+                         <MdDelete />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Pagination Controls */}
+              <div className="flex justify-center mt-6 items-center gap-2 flex-wrap">
+                <button
+                  className="btn join-item "
+                  disabled={currentPage === 1}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                >
+                  Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentPage(idx + 1)}
+                    className={`btn join-item ${
+                      currentPage === idx + 1
+                        ? "btn-active bg-[#031B4E] text-white"
+                        : ""
+                    }`}
+                  >
+                    {idx + 1}
+                  </button>
+                ))}
+
+                <button
+                  className="btn join-item"
+                  disabled={currentPage === totalPages}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="text-center text-sky-800 p-20 font-bold text-2xl h-screen">
+            No camps found matching your search.
+          </div>
+        )}
+      </div>
     </div>
   );
 };

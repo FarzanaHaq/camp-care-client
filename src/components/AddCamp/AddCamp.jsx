@@ -84,7 +84,8 @@ const AddCamp = () => {
   }
 
   return (
-    <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+   <div className="bg-[#F2F4F7] h-screen pt-20 px-20">
+     <div className=" flex flex-col justify-center items-center text-gray-800 bg-white rounded-2xl py-10 shadow-xl">
       <form onSubmit={handleFormSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-6">
@@ -94,7 +95,7 @@ const AddCamp = () => {
                 Camp Name
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border-2 border-sky-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border-2 border-gray-300 focus:outline-none rounded-md bg-white"
                 name="name"
                 id="name"
                 type="text"
@@ -108,7 +109,7 @@ const AddCamp = () => {
                 Location
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border-2 border-sky-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border-2 border-gray-300 focus:outline-none rounded-md bg-white"
                 name="location"
                 id="location"
                 type="text"
@@ -125,7 +126,7 @@ const AddCamp = () => {
               <textarea
                 id="description"
                 placeholder="Write camp description here..."
-                className="block rounded-md focus:lime-300 w-full h-37 px-4 py-3 text-gray-800  border-2 border-sky-300 bg-white focus:outline-lime-500 "
+                className="block rounded-md focus:lime-300 w-full h-37 px-4 py-3 text-gray-800  border-2 border-gray-300 bg-white focus:outline-none "
                 name="description"
               ></textarea>
             </div>
@@ -139,7 +140,7 @@ const AddCamp = () => {
                   Camp Fee
                 </label>
                 <input
-                  className="w-full px-4 py-3 text-gray-800 border-2 border-sky-300 focus:outline-lime-500 rounded-md bg-white"
+                  className="w-full px-4 py-3 text-gray-800 border-2 border-gray-300 focus:outline-none rounded-md bg-white"
                   name="price"
                   id="price"
                   type="text"
@@ -155,7 +156,7 @@ const AddCamp = () => {
                 <DatePicker
                   selected={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
-                  className="w-full px-4 py-3 text-gray-800 border-2 border-sky-300 focus:outline-lime-500 rounded-md bg-white"
+                  className="w-full px-4 py-3 text-gray-800 border-2 border-gray-300 focus:outline-none rounded-md bg-white"
                 />
               </div>
             </div>
@@ -165,7 +166,7 @@ const AddCamp = () => {
                 Healthcare Professional Name
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border-2 border-sky-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border-2 border-gray-300 focus:outline-none rounded-md bg-white"
                 name="healthcare"
                 id="healthcare"
                 type="text"
@@ -175,7 +176,7 @@ const AddCamp = () => {
             </div>
             {/* Image */}
             <div className=" p-4  w-full  m-auto rounded-lg flex-grow">
-              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-sky-300 rounded-lg">
+              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
                 <div className="flex items-center gap-5 w-max mx-auto text-center">
                   <label>
                     <input
@@ -187,7 +188,7 @@ const AddCamp = () => {
                       accept="image/*"
                       hidden
                     />
-                    <div className="bg-sky-300 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500">
+                    <div className="bg-[#031B4E] text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3">
                      Upload
                     </div>
                   </label>   
@@ -210,7 +211,7 @@ const AddCamp = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-sky-300 "
+              className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#031B4E] "
             >
               {isUploading ? "Saving..." : "Save"}
             </button>
@@ -219,6 +220,7 @@ const AddCamp = () => {
       </form>
       <ToastContainer />
     </div>
+   </div>
   );
 };
 

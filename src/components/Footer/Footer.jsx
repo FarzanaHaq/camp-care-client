@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-           <footer className="footer sm:footer-horizontal bg-white text-neutral-content p-10">
+           <footer className="footer sm:footer-horizontal bg-white text-neutral-content p-5">
         <aside className="pl-14">
           <img
             className="w-30 h-30 bg-white mt-1"
@@ -20,7 +20,7 @@ const Footer = () => {
             Contact Us
           </p>
         </aside>
-        <nav className="ml-40 mt-5">
+        <nav className="ml-40 mt-35">
           <h6 className="footer-title text-gray-800">Social</h6>
           <div className="grid grid-flow-col gap-4">
             <a>

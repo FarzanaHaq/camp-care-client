@@ -5,9 +5,9 @@ export const Spinner = () => {
       <div className=' flex 
       flex-col 
       justify-center 
-      items-center h-[70vh]'
+      items-center h-screen bg-white'
     >
-      <ScaleLoader size={100} color='lime' />
+      <ScaleLoader size={100} color='#031B4E' />
     </div>
   )
 }

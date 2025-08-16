@@ -31,7 +31,7 @@ export const ManageRegistered = () => {
         `https://camp-server-lake.vercel.app/confirm/${id}`,
         newData
       );
-    
+
       // Optionally update UI here, e.g., refetch or update local state
       setMyData((prev) =>
         prev.map((item) =>
@@ -90,115 +90,119 @@ export const ManageRegistered = () => {
   }, [searchTerm]);
 
   return (
-    <div className="mx-auto mt-10 max-w-7xl px-4 text-black">
-      <div className="flex justify-center">
-        {/* Search Input */}
-        <input
-          type="text"
-          placeholder="Search by camp name, user name, or confirmation status..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 mb-5"
-        />
-      </div>
-
-      {filteredData.length > 0 ? (
-        <>
-          <div className="overflow-x-auto border-gray-300 border-2 py-5">
-            {/* Showing text */}
-            <div className="text-gray-600 text-sm mb-4 ml-4">
-              Showing{" "}
-              <span className="font-semibold">
-                {Math.min(indexOfFirstRow + 1, filteredData.length)}–
-                {Math.min(indexOfLastRow, filteredData.length)}
-              </span>{" "}
-              of <span className="font-semibold">{filteredData.length}</span>
-            </div>
-
-            <table className="table w-full">
-              <thead>
-                <tr className="text-gray-800">
-                  <th>Camp Name</th>
-                  <th>Fee</th>
-                  <th>Name</th>
-                  <th>Payment Status</th>
-                  <th>Confirmation Status</th>
-                  <th>Cancel</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentRows.map((data) => (
-                  <tr key={data._id}>
-                    <td>{data.name}</td>
-                    <td>{data.price}$</td>
-                    <td>{data.userName}</td>
-                    <td>{data.status}</td>
-                    <td>
-                      <button
-                        onClick={() => handleClick(data._id)}
-                        className="btn bg-white text-sky-800"
-                      >
-                        {data.conformatioon || "pending"}
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(data._id)}
-                        className="btn bg-white text-sky-800"
-                        disabled={
-                          data.status === "paid" &&
-                          data.conformatioon === "confirmed"
-                        }
-                      >
-                        Cancel
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            {/* Pagination Controls */}
-            <div className="flex justify-center mt-6 items-center gap-2 flex-wrap">
-              <button
-                className="btn join-item"
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              >
-                Prev
-              </button>
-
-              {[...Array(totalPages)].map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentPage(idx + 1)}
-                  className={`btn join-item ${
-                    currentPage === idx + 1
-                      ? "btn-active bg-sky-600 text-white"
-                      : ""
-                  }`}
-                >
-                  {idx + 1}
-                </button>
-              ))}
-
-              <button
-                className="btn join-item"
-                disabled={currentPage === totalPages}
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="text-center text-sky-800 p-20 font-bold text-2xl">
-          No registered camps found.
+    <div className="bg-[#F2F4F7]">
+      <div className="mx-auto pt-10 px-6 text-black">
+        <div className="flex justify-center">
+          {/* Search Input */}
+          <input
+            type="text"
+            placeholder="Search by camp name, user name, or confirmation status..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 mb-5"
+          />
         </div>
-      )}
+
+        {filteredData.length > 0 ? (
+          <>
+            <div className="overflow-x-auto  py-5">
+              {/* Showing text */}
+              <div className="text-gray-600 text-sm mb-4 ml-4">
+                Showing{" "}
+                <span className="font-semibold">
+                  {Math.min(indexOfFirstRow + 1, filteredData.length)}–
+                  {Math.min(indexOfLastRow, filteredData.length)}
+                </span>{" "}
+                of <span className="font-semibold">{filteredData.length}</span>
+              </div>
+
+              <table className="table ">
+                <thead>
+                  <tr className="text-gray-800 border-b-2 border-gray-200">
+                    <th>Camp Name</th>
+                    <th>Fee</th>
+                    <th>Name</th>
+                    <th>Payment Status</th>
+                    <th>Confirmation Status</th>
+                    <th>Cancel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentRows.map((data) => (
+                    <tr key={data._id} className=" border-b-2 border-gray-200 ">
+                      <td>{data.name}</td>
+                      <td>{data.price}$</td>
+                      <td>{data.userName}</td>
+                      <td>{data.status}</td>
+                      <td>
+                        <button
+                          onClick={() => handleClick(data._id)}
+                          className="btn bg-white text-sky-800 border-none shadow-xl"
+                        >
+                          {data.conformatioon || "pending"}
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(data._id)}
+                          className="btn bg-white text-sky-800 border-none shadow-xl"
+                          disabled={
+                            data.status === "paid" &&
+                            data.conformatioon === "confirmed"
+                          }
+                        >
+                          Cancel
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Pagination Controls */}
+              <div className="flex justify-center mt-6 items-center gap-2 flex-wrap">
+                <button
+                  className="btn join-item"
+                  disabled={currentPage === 1}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                >
+                  Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentPage(idx + 1)}
+                    className={`btn join-item ${
+                      currentPage === idx + 1
+                        ? "btn-active bg-[#031B4E] text-white"
+                        : ""
+                    }`}
+                  >
+                    {idx + 1}
+                  </button>
+                ))}
+
+                <button
+                  className="btn join-item"
+                  disabled={currentPage === totalPages}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="text-center text-sky-800 p-20 font-bold text-2xl h-screen">
+            No registered camps found.
+          </div>
+        )}
+      </div>
     </div>
   );
 };

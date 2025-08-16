@@ -9,48 +9,49 @@ const Profile = () => {
   const [role, isRoleLoading] = useRole();
   if (isRoleLoading) return <Spinner />;
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen bg-[#F2F4F7]">
       <div className="bg-white shadow-lg rounded-2xl md:w-4/5 lg:w-3/5">
         <img
-          alt="cover photo"
-          src={
-          "https://i.ibb.co/BV3TGX3N/download-4.jpg"}
-          className="w-full mb-4 rounded-t-lg h-56"
+          src="https://i.ibb.co.com/TMqwHNc2/123134.webp"
+          className="w-full h-56"
+          alt=""
         />
-        <div className="flex flex-col items-center justify-center p-4 -mt-16">
-          <a href="#" className="relative block">
-            <img
-              alt="profile"
-              src={user.photoURL}
-              className="mx-auto object-cover rounded-full h-24 w-24  border-2 border-white "
-            />
-          </a>
-
-          <p className="p-2 px-4 text-xs text-white bg-sky-400 rounded-full">
-            {role?.toUpperCase()}
-          </p>
-          <p className="mt-2 text-xl font-medium text-gray-800 ">
-            User Id: {user.uid}
-          </p>
-          <div className="w-full p-2 mt-4 rounded-lg">
-            <div className="flex flex-wrap items-center justify-between text-sm text-gray-600 ">
-              <p className="flex flex-col">
+        <div className="flex p-4 items-center pl-30">
+          <div className=" border-r-2 border-gray-300 pr-20 mt-2">
+            <a href="#" className="relative block">
+              <img
+                alt="profile"
+                src={user?.photoURL}
+                className="mx-auto object-cover rounded-full h-25 w-25  border-2 border-white "
+              />
+            </a>
+            <div className="flex justify-center">
+              <p className="p-2 px-4 text-xs w-[100px] text-white bg-[#006D77] rounded-full">
+                {role?.toUpperCase()}
+              </p>
+            </div>
+          </div>
+          <div className="w-full p-2 mt-4 rounded-lg pl-20">
+            <div className=" text-sm  ">
+              <p className="flex flex-col text-[#233B67] text-[18px] font-[700]">
                 Name
-                <span className="font-bold text-black ">
+                <span className="font-[500] text-[16px] text-[#6F6F6F]">
                   {user.displayName}
                 </span>
               </p>
-              <p className="flex flex-col">
+              <p className="flex flex-col text-[#233B67] text-[18px] font-[700]">
                 Email
-                <span className="font-bold text-black ">{user.email}</span>
+                <span className="ont-[500] text-[16px] text-[#6F6F6F]">
+                  {user.email}
+                </span>
               </p>
 
               <div>
-              <Link to={"/dashboard/update-profile"}>
-               <button className="bg-sky-400 px-10 py-1 rounded-lg text-[16px] cursor-pointer hover:bg-lime-800 block mb-1 mt-2 text-white font-medium">
-                  Update Profile
-                </button>
-              </Link>
+                <Link to={"/dashboard/update-profile"}>
+                  <button className="bg-[#006D77] px-10 py-2 rounded-lg text-[16px] cursor-pointer block mb-1 mt-2 text-white font-medium">
+                    Update Profile
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
