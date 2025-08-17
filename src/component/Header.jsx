@@ -92,6 +92,18 @@ const Header = () => {
                   Available Camps
                 </NavLink>
               </li>
+                <li>
+                <NavLink
+                  to={"/about"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "border-b-2 rounded-none text-[#006D77] font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
+                      : "font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
+                  }
+                >
+                  About
+                </NavLink>
+              </li>
               {user ? (
                 ""
               ) : (

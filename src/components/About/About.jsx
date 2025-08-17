@@ -1,4 +1,3 @@
-import React from "react";
 import { FaHeartPulse } from "react-icons/fa6";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 

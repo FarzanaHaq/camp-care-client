@@ -17,6 +17,7 @@ import { PaymentHistory } from "../components/PaymentHistory/PaymentHistory";
 import { UpdateProfile } from "../components/UpdateProfile/UpdateProfile";
 import { UpdateCamp } from "../components/UpdateCamp/UpdateCamp";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import { AboutPage } from "../components/AboutPage/AboutPage";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       { path: "/avail", element: <Available /> },
+        { path: "/about", element: <AboutPage></AboutPage> },
       {
         path: "details/:id",
         loader: ({ params }) =>

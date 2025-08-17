@@ -39,7 +39,8 @@ export const GetInvolved = () => {
         Get Involved With Us
       </h1>
       <p className="text-center text-[18px] text-[#6F6F6F]">
-        Whether you're a medical professional, donor, or partner — your support <br />
+        Whether you're a medical professional, donor, or partner — your support{" "}
+        <br />
         helps us deliver care to those who need it most.
       </p>
       <div className="max-w-6xl mx-auto text-center mt-15 mb-10">
@@ -50,11 +51,13 @@ export const GetInvolved = () => {
               className="bg-white back-card rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center"
             >
               <div className="mb-4">{option.icon}</div>
-              <h3 className="text-xl font-semibold mb-2 letter-primary">{option.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 letter-primary">
+                {option.title}
+              </h3>
               <p className="text-gray-600 mb-4">{option.description}</p>
-              <button className="btn  text-[16px] text-white bg-[#006D77]">
+              {/*   <button className="btn  text-[16px] text-white bg-[#006D77]">
                 {option.button}
-              </button>
+              </button>*/}
             </div>
           ))}
         </div>

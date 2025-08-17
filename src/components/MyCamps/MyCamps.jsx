@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { MdOutlineRateReview } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 const stripePromise = loadStripe(
   "pk_test_51Rl1cFRqsLeiCeWjk2BA4SQzSIKWNTVlLWuK4aZvE287GtLFQu4H2clGWiWkhdwuoscvW0ihrbICeje0ovgSc5c500uzgiGNZq"
@@ -29,7 +31,9 @@ export const MyCamps = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`https://camp-server-lake.vercel.app/all-register?email=${user?.email}`)
+    fetch(
+      `https://camp-server-lake.vercel.app/all-register?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyData(data);
@@ -38,7 +42,9 @@ export const MyCamps = () => {
 
   function refetch() {
     if (!user?.email) return;
-    fetch(`https://camp-server-lake.vercel.app/all-register?email=${user?.email}`)
+    fetch(
+      `https://camp-server-lake.vercel.app/all-register?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyData(data);
@@ -61,7 +67,9 @@ export const MyCamps = () => {
   );
 
   async function handleClick(params) {
-    const res = await fetch(`https://camp-server-lake.vercel.app/pay-register?id=${params}`);
+    const res = await fetch(
+      `https://camp-server-lake.vercel.app/pay-register?id=${params}`
+    );
     const data = await res.json();
     setOneData(data[0]);
   }
@@ -108,19 +116,19 @@ export const MyCamps = () => {
   };
 
   return (
-    <div>
+    <div className="bg-[#F2F4F7] pt-15 px-10 h-screen">
       <div className="flex justify-between items-center mb-4">
         <input
           type="text"
           placeholder="Search by title, name, payment status..."
-          className="input input-bordered w-full max-w-xs text-black bg-white border-2 border-gray-300"
+          className="input input-bordered w-full max-w-xs text-black bg-white border-2 border-gray-300 ml-3"
           value={searchTerm}
           onChange={(e) => {
             setSearchTerm(e.target.value);
             setCurrentPage(1); // reset to first page on search
           }}
         />
-        <p className="text-gray-700 text-sm">
+        <p className="text-gray-700 text-sm pr-10">
           Showing {startIndex + 1} -{" "}
           {Math.min(startIndex + itemsPerPage, totalItems)} of {totalItems}
         </p>
@@ -130,7 +138,7 @@ export const MyCamps = () => {
         <div className="overflow-x-auto py-5">
           <table className="table">
             <thead>
-              <tr className="text-black">
+              <tr className="text-black border-b-2 border-gray-200">
                 <th>Title</th>
                 <th>Fee</th>
                 <th>Name</th>
@@ -142,18 +150,18 @@ export const MyCamps = () => {
             </thead>
             <tbody>
               {paginatedData.map((data) => (
-                <tr key={data._id}>
+                <tr key={data._id} className="border-b-2 border-gray-200">
                   <td className="text-gray-800">{data.name}</td>
                   <td className="text-gray-800">{data.price}$</td>
                   <td className="text-gray-800">{data.userName}</td>
                   <td>
                     {data.status === "paid" ? (
-                      <button className="btn bg-white text-sky-800" disabled>
+                      <button className=" bg-white text-sky-800" disabled>
                         Paid
                       </button>
                     ) : (
                       <button
-                        className="btn bg-white text-sky-800"
+                        className=" bg-white text-sky-800"
                         onClick={() => {
                           handleClick(data._id);
                           document.getElementById("my_modal_1").showModal();
@@ -170,19 +178,19 @@ export const MyCamps = () => {
                         setUserData(data);
                         document.getElementById("my_modal_2").showModal();
                       }}
-                      className="btn bg-white text-sky-800"
+                      className="py-2 px-5 rounded-lg text-[25px] cursor-pointer text-[#031B4E]  font-medium"
                       disabled={data.feeback === true}
                     >
-                      Feedback
+                      <MdOutlineRateReview />
                     </button>
                   </td>
                   <td>
                     <button
                       onClick={() => handleDelete(data._id)}
-                      className="btn bg-white text-sky-800"
+                      className="py-2 px-3 rounded-lg text-[25px] cursor-pointer text-[#031B4E]  font-medium"
                       disabled={data.status === "paid"}
                     >
-                      Cancel
+                      <MdDelete />
                     </button>
                   </td>
                 </tr>
@@ -198,7 +206,7 @@ export const MyCamps = () => {
                 onClick={() => setCurrentPage(i + 1)}
                 className={`mx-1 px-3 py-1 rounded ${
                   currentPage === i + 1
-                    ? "bg-sky-600 text-white"
+                    ? "bg-[#031B4E] text-white"
                     : "bg-gray-200 text-black"
                 }`}
               >
@@ -208,7 +216,7 @@ export const MyCamps = () => {
           </div>
         </div>
       ) : (
-        <div className="text-center text-sky-800 p-20 font-bold text-2xl">
+        <div className="text-center text-sky-800 p-20 font-bold text-2xl h-screen">
           No data found.
         </div>
       )}

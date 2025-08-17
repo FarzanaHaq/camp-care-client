@@ -13,7 +13,7 @@ const Profile = () => {
       <div className="bg-white shadow-lg rounded-2xl md:w-4/5 lg:w-3/5">
         <img
           src="https://i.ibb.co.com/TMqwHNc2/123134.webp"
-          className="w-full h-56"
+          className="w-full h-65 object-cover object-top-left"
           alt=""
         />
         <div className="flex p-4 items-center pl-30">

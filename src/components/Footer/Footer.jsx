@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Footer = () => {
     return (
@@ -10,12 +11,13 @@ const Footer = () => {
             src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
             alt="logo"
           />
-          <p className="text-gray-600 text-[16px] font-medium ml-5">
-            Terms of Service
-          </p>
-          <p className="text-gray-600 text-[16px] font-medium ml-5">
-            Privacy Policy
-          </p>
+          <Link to={"/"}>  <p className="text-gray-600 text-[16px] font-medium ml-5">
+           Home
+          </p></Link>
+        
+         <Link to={"/about"}>  <p className="text-gray-600 text-[16px] font-medium ml-5">
+         About Us
+          </p></Link>
           <p className="text-gray-600 text-[16px] font-medium ml-5">
             Contact Us
           </p>

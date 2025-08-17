@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import Header from "../../component/Header";
 import { FaHeartPulse } from "react-icons/fa6";
 import { LuPhoneCall } from "react-icons/lu";
 import Services from "../Services/Services";
+import { Link } from "react-router";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Banner = () => {
+  const { user } = use(AuthContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,7 +27,7 @@ const Banner = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    // You can send formData to your backend here
+    toast("Form Submitted");
   };
 
   return (
@@ -47,9 +51,12 @@ const Banner = () => {
               encompassing a range of services from preventive
             </p>
             <div className="flex justify-center items-center gap-5 mt-10 ">
-              <button className="rounded-full bg-white back-card letter-primary px-6 py-3 text-[#233B67] text-[18px] font-[500]">
-                Get Started Today
-              </button>
+              <Link to={"/avail"}>
+                <button className="rounded-full bg-white back-card letter-primary px-6 py-3 text-[#233B67] text-[18px] font-[500]">
+                  Get Started Today
+                </button>
+              </Link>
+
               <div className="flex justify-center items-center gap-5 text-white letter-primary">
                 <LuPhoneCall className="text-[45px]" />
                 <div>
@@ -70,9 +77,11 @@ const Banner = () => {
           inquiries are 100% private with no obligation.
         </p>
         <div>
-          <button className="text-[#233B67] font-[600] bg-white px-6 py-2 rounded-full">
-            View All Camps
-          </button>
+          <Link to={"avail"}>
+            <button className="text-[#233B67] font-[600] bg-white px-6 py-2 rounded-full">
+              View All Camps
+            </button>
+          </Link>
         </div>
       </div>
       <div className="absolute top-175 right-40">
@@ -92,7 +101,7 @@ const Banner = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your Name"
+                placeholder={user ? user?.displayName : "Your Name"}
                 className="mt-1 block w-full rounded-md border-1 border-gray-300 shadow-sm py-2 px-3  focus:ring-0 focus:outline-none placeholder-[#6F6F6F] font-[500] text-[18px]"
               />
             </div>
@@ -104,7 +113,7 @@ const Banner = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Email Address"
+               placeholder={user ? user?.email : "Your Email"}
                 className="mt-1 block w-full rounded-md border-1 border-gray-300 shadow-sm py-2 px-3  focus:ring-0 focus:outline-none placeholder-[#6F6F6F] font-[500] text-[18px]"
               />
             </div>

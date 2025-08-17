@@ -28,8 +28,8 @@ export const Analytics = () => {
   }, [user?.email]);
 
   return (
-    <div className="p-10">
-      <h2 className="text-2xl font-bold mb-6 text-center text-sky-400">
+    <div className=" bg-[#F2F4F7] pt-15 h-screen">
+      <h2 className="text-2xl font-bold mb-6 text-center text-[#031B4E]">
         My Camp Registration Analytics
       </h2>
       <ResponsiveContainer width="100%" height={400}>
