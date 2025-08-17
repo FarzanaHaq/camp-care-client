@@ -28,14 +28,14 @@ export const GetInvolved = () => {
   ];
 
   return (
-    <section className="py-16 px-4 my-20">
-      <div className=" flex justify-center items-center gap-3 text-[#006D77]">
+    <section className="py-16 px-4 mt-20 mb-14">
+      <div className=" flex justify-center items-center gap-3 text-[#006D77] letter-primary">
         <FaHeartPulse></FaHeartPulse>
         <h1 className="font-[500] mt-0.5 text-[18px] uppercase">
           volunteer today
         </h1>
       </div>
-      <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 ">
+      <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 letter-primary">
         Get Involved With Us
       </h1>
       <p className="text-center text-[18px] text-[#6F6F6F]">
@@ -47,10 +47,10 @@ export const GetInvolved = () => {
           {involvementOptions.map((option, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center"
+              className="bg-white back-card rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center"
             >
               <div className="mb-4">{option.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{option.title}</h3>
+              <h3 className="text-xl font-semibold mb-2 letter-primary">{option.title}</h3>
               <p className="text-gray-600 mb-4">{option.description}</p>
               <button className="btn  text-[16px] text-white bg-[#006D77]">
                 {option.button}

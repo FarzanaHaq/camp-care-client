@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { FaHeartPulse } from "react-icons/fa6";
 import { Link } from "react-router";
+import Header from "../../component/Header";
 
 const Available = () => {
   const [data, setData] = useState([]);
@@ -33,16 +35,26 @@ const Available = () => {
     });
 
   return (
-    <div className="px-4 mt-16 mb-20">
+    <div className="bg-[#F2F4F7] pb-20 back-primary">
       <Helmet>
         <title>Available Camps</title>
       </Helmet>
-      <h1 className="text-center text-3xl font-bold text-sky-500 mb-6">
-        All Medical Camps
-      </h1>
+
+      <div class="relative bg-[url('https://i.ibb.co.com/WvF3p36k/welison-franklin-1BcQAROQVXY-unsplash.jpg')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <div class="relative z-10">
+          <div className="flex justify-center pt-5">
+            <Header></Header>
+          </div>
+          <h1 className="pt-30 pb-50 text-[50px] font-[700] text-white text-end pr-36">
+            Medical Camps
+          </h1>
+        </div>
+      </div>
 
       {/* Search + Sort + Layout */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between mb-10">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between mb-10 mt-20">
         {/* Search */}
         <input
           type="text"
@@ -111,7 +123,7 @@ const Available = () => {
               </div>
               <div className="card-actions justify-end mt-4">
                 <Link to={`/details/${data._id}`}>
-                  <button className="btn bg-sky-400 text-white btn-sm">
+                  <button className=" bg-[#006D77] text-[16px] px-4 py-2 font-[600] text-white btn-sm">
                     Join Camp
                   </button>
                 </Link>

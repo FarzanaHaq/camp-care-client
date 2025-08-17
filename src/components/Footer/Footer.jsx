@@ -3,20 +3,20 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-           <footer className="footer sm:footer-horizontal bg-white text-neutral-content p-5">
-        <aside className="pl-14">
+           <footer className="footer sm:footer-horizontal bg-white back-primary text-neutral-content p-5">
+        <aside className="pl-15">
           <img
             className="w-30 h-30 bg-white mt-1"
             src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
             alt="logo"
           />
-          <p className="text-gray-600 text-[16px] font-medium ml-3">
+          <p className="text-gray-600 text-[16px] font-medium ml-5">
             Terms of Service
           </p>
-          <p className="text-gray-600 text-[16px] font-medium ml-3">
+          <p className="text-gray-600 text-[16px] font-medium ml-5">
             Privacy Policy
           </p>
-          <p className="text-gray-600 text-[16px] font-medium ml-3">
+          <p className="text-gray-600 text-[16px] font-medium ml-5">
             Contact Us
           </p>
         </aside>

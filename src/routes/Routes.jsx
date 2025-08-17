@@ -16,12 +16,13 @@ import { MyCamps } from "../components/MyCamps/MyCamps";
 import { PaymentHistory } from "../components/PaymentHistory/PaymentHistory";
 import { UpdateProfile } from "../components/UpdateProfile/UpdateProfile";
 import { UpdateCamp } from "../components/UpdateCamp/UpdateCamp";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    //errorElement: <ErrorPage />,
+    //errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

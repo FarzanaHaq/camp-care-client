@@ -14,3 +14,17 @@
   font-style: normal;
 }
 
+@layer utilities {
+  html[data-theme="dark"] .letter-primary {
+    @apply text-gray-500;
+  }
+  html[data-theme="dark"] .back-primary {
+    @apply bg-gray-900;
+  }
+  html[data-theme="dark"] .back-card {
+    @apply bg-[#1D232A];
+  }
+  html[data-theme="dark"] .letter-sec {
+    @apply text-[#6F6F6F];
+  }
+}

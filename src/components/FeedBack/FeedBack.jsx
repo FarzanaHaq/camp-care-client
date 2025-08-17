@@ -13,15 +13,15 @@ export const FeedBack = () => {
   }, []);
 
   return (
-    <div className="bg-[#F2F4F7] py-30 mt-5">
+    <div className="bg-[#F2F4F7] py-30 mt-5 back-primary">
       <div className=" px-4 max-w-6xl mx-auto  ">
-        <div className=" flex justify-center items-center gap-3 text-[#006D77]">
+        <div className=" flex justify-center items-center gap-3 text-[#006D77] letter-primary">
           <FaHeartPulse></FaHeartPulse>
-          <h1 className="font-[500] mt-0.5 text-[18px] uppercase">
+          <h1 className="font-[500] mt-0.5 text-[18px] uppercase letter-primary">
             Client Review's
           </h1>
         </div>
-        <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 ">
+        <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 letter-primary">
           What Our Clients Say
         </h1>
         <p className="text-center text-[18px] text-[#6F6F6F]">
@@ -33,9 +33,9 @@ export const FeedBack = () => {
           {data.map((item) => (
             <div
               key={item._id}
-              className="bg-white rounded-2xl shadow-lg p-6 border border-sky-100 hover:shadow-xl transition duration-300"
+              className="bg-white back-card rounded-2xl shadow-lg p-6 border border-sky-100 hover:shadow-xl transition duration-300"
             >
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              <h2 className="text-xl font-semibold text-gray-800 mb-2 letter-primary">
                 {item.title}
               </h2>
 

@@ -18,13 +18,13 @@ export const ShowCamps = () => {
   return (
     <div>
       <div className=" ">
-        <div className=" flex justify-center items-center mt-25 gap-3 text-[#006D77]">
+        <div className=" flex justify-center items-center mt-25 gap-3 text-[#006D77] letter-primary">
           <FaHeartPulse></FaHeartPulse>
           <h1 className="font-[500] mt-0.5 text-[18px] uppercase">
             Our Camps's
           </h1>
         </div>
-        <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 ">
+        <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 letter-primary">
           Most Popular Camps Currently
         </h1>
         <p className="text-center text-[18px] text-[#6F6F6F]">
@@ -42,7 +42,7 @@ export const ShowCamps = () => {
                 />
               </figure>
               <div className="card-body pb-5">
-                <h2 className="card-title">{data.name}</h2>
+                <h2 className="card-title letter-primary">{data.name}</h2>
                 <p className="text-sm text-gray-600">
                   <strong>Fee:</strong> {data.price}$
                 </p>
