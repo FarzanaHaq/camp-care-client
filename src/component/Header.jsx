@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="navbar bg-base-100  pt-2 roboto-new w-6xl rounded-full">
+      <div className="navbar bg-base-100 pt-2 roboto-new w-[340px] lg:w-6xl rounded-full">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,16 +54,27 @@ const Header = () => {
               <li>
                 <NavLink to={"/"}>Home</NavLink>
               </li>
+              <li>
+                <NavLink to={"/avail"}> Available Camps</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/about"}> About</NavLink>
+              </li>
+              <li>
+                <NavLink to={"/register"}> Join Us</NavLink>
+              </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
-            <div className="flex items-center">
+          <a className="btn btn-ghost text-xl ">
+            <div className="hidden lg:flex items-center">
               <img
                 className="w-15 h-15 bg-white mt-1"
                 src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
                 alt=""
               />
-              <span className="text-2xl font-bold text-[#031B4E]">CampCare</span>
+              <span className="text-2xl font-bold text-[#031B4E]">
+                CampCare
+              </span>
             </div>
           </a>
           <div className="navbar-center hidden lg:flex">
@@ -92,7 +103,7 @@ const Header = () => {
                   Available Camps
                 </NavLink>
               </li>
-                <li>
+              <li>
                 <NavLink
                   to={"/about"}
                   className={({ isActive }) =>
@@ -124,7 +135,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="navbar-end pr-5">
+        <div className="navbar-end lg:pr-5">
           <div className="relative">
             <div className="flex flex-row items-center gap-3">
               {/* Dropdown btn */}
@@ -178,7 +189,7 @@ const Header = () => {
                         to="/register"
                         className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
                       >
-                        Sign Up
+                        Register
                       </Link>
                     </>
                   )}
@@ -186,7 +197,7 @@ const Header = () => {
               </div>
             )}
           </div>
-          <label className="swap swap-rotate ml-3">
+          <label className="swap swap-rotate hidden lg:inline-flex -ml-0">
             <input onChange={handleToggle} type="checkbox" />
 
             <svg
@@ -205,6 +216,18 @@ const Header = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
+          <a className="btn btn-ghost text-xl inline-flex lg:hidden">
+            <div className="flex items-center justify-end">
+              <img
+                className="w-15 h-15 bg-white mt-1"
+                src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
+                alt=""
+              />
+              <span className="lg:text-2xl font-bold text-[#031B4E]">
+                CampCare
+              </span>
+            </div>
+          </a>
         </div>
       </div>
     </div>

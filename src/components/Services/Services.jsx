@@ -3,79 +3,142 @@ import { FaHeartPulse } from "react-icons/fa6";
 const Services = () => {
   return (
     <div>
-      <div className="flex items-center justify-between pt-15">
-        <div>
+      <div className=" lg:flex lg:items-center lg:justify-between pt-15">
+        <div className="px-5">
           <div className="text-[#006D77] letter-primary flex items-center gap-2">
             <FaHeartPulse></FaHeartPulse>
             <p className="uppercase font-[500] text-[18px]">Our Services</p>
           </div>
-          <div className="font-[500] text-[40px] text-[#031B4E] letter-primary">
+          <div className="font-[500] text-[28px] lg:text-[40px] text-[#031B4E] letter-primary">
             Our Healthcare Specialties
           </div>
         </div>
-        <div className="text-[#6F6F6F] text-[18px] font-[500] border-l border-gray-300 pl-15">
+        <div className="text-[#6F6F6F] text-[18px] font-[500] border-l border-gray-300 lg:pl-15 w-[630px] hidden lg:block">
           Lorem Ipsum is simply dummy text of the printing and typesetting{" "}
-          <br /> industry. Borem Hpsum bas leen the industry’s standard dummy{" "}
-          <br /> text ever since.
+          industry. Borem Hpsum bas leen the industry’s standard dummy text ever
+          since.
         </div>
       </div>
-      <div className="mt-14 grid grid-cols-4 gap-6">
-      
-        <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/5Xmqrhb5/Hearth.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Cardiology</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+      <div className="mt-14 grid grid-cols-1 lg:grid-cols-4 gap-6 px-4">
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/5Xmqrhb5/Hearth.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Cardiology
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
-          <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/C5JLp509/3.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Pulmonology</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/C5JLp509/3.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Pulmonology
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
-          <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/qMsPM7Rg/11.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Neurology</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/qMsPM7Rg/11.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Neurology
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
-          <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/rGPznxM0/Fever.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Fever</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/rGPznxM0/Fever.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Fever
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
-         <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/SDL2WtXZ/Oncology.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Oncology</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/SDL2WtXZ/Oncology.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Oncology
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
-         <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/V0L9mnSK/Infection.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Infection</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/V0L9mnSK/Infection.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Infection
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
-         <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/WNQ4kFhq/Hematology.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Hematology</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/WNQ4kFhq/Hematology.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Hematology
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
-         <div className="bg-white back-card w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
-              <div className="flex justify-center ">
-             <img src="https://i.ibb.co.com/PZ30HvcR/Paediatrician.png" className="w-[70px]" alt="" />
-              </div>
-              <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">Paediatrician</h1>
-              <p className="text-center text-[#6F6F6F] text-[18px]">Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.</p>
+        <div className="bg-white back-card w-[340px] lg:w-[280px] py-12 rounded-2xl border-2 border-gray-200 space-y-3">
+          <div className="flex justify-center ">
+            <img
+              src="https://i.ibb.co.com/PZ30HvcR/Paediatrician.png"
+              className="w-[70px]"
+              alt=""
+            />
+          </div>
+          <h1 className="text-center text-[#031B4E] text-[22px] font-[500] letter-primary">
+            Paediatrician
+          </h1>
+          <p className="text-center text-[#6F6F6F] text-[18px]">
+            Lorem ipsum dolor sit amet <br /> conse ctetur adip scing.
+          </p>
         </div>
       </div>
     </div>

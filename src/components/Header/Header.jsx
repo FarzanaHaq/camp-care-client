@@ -55,14 +55,14 @@ const Header = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">
-            <div className="flex items-center">
+          <a className="btn btn-ghost text-xl visible">
+            <div className="hidden lg:flex items-center">
               <img
-                className="w-15 h-15 bg-white mt-1"
+                className="w-15 h-15 bg-white mt-1  "
                 src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
                 alt=""
               />
-              <span className="text-2xl font-bold text-sky-400">CampCare</span>
+              <span className="text-2xl font-bold text-sky-400">Camp</span>
             </div>
           </a>
           <div className="navbar-center hidden lg:flex">

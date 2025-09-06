@@ -18,22 +18,22 @@ export const ShowCamps = () => {
   return (
     <div>
       <div className=" ">
-        <div className=" flex justify-center items-center mt-25 gap-3 text-[#006D77] letter-primary">
+        <div className=" flex justify-center items-center mt-15 lg:mt-25 gap-3 text-[#006D77] letter-primary">
           <FaHeartPulse></FaHeartPulse>
           <h1 className="font-[500] mt-0.5 text-[18px] uppercase">
             Our Camps's
           </h1>
         </div>
-        <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 letter-primary">
+        <h1 className="text-center text-[20px] lg:text-[40px] font-[500] text-[#031B4E] my-3 letter-primary">
           Most Popular Camps Currently
         </h1>
-        <p className="text-center text-[18px] text-[#6F6F6F]">
-          98% of patients report cheap and good quality treatments in <br /> our
+        <p className="text-center text-[18px] text-[#6F6F6F]  max-w-[450px] mx-auto px-5">
+          98% of patients report cheap and good quality treatments in our
           program, Experience the difference yourself.
         </p>
-        <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto mt-10 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-10 mb-10 lg:mb-20 px-5">
           {data.slice(0, 6).map((data) => (
-            <div className="card bg-base-100 rounded-none shadow-2xl">
+            <div className="card bg-white rounded-none shadow-2xl ">
               <figure>
                 <img
                   className="h-[200px] w-[400px] object-cover object-center"
@@ -55,7 +55,7 @@ export const ShowCamps = () => {
 
                 <div className="card-actions justify-end mt-3">
                   <Link to={`/details/${data._id}`}>
-                    <button className="btn px-6 py-2 rounded-full  text-[16px] font-[600] bg-[#006D77] text-white">
+                    <button className="btn px-6 py-2 rounded-full  text-[16px] font-[600] bg-[#006D77] text-white border-none">
                       Join Camp <FaPlus className="mt-0.5 " />
                     </button>
                   </Link>
@@ -66,7 +66,7 @@ export const ShowCamps = () => {
         </div>
         <div className="flex justify-center">
           <Link to={`/avail`}>
-            <button className="btn bg-[#006D77] text-white text-[16px]">
+            <button className="btn bg-[#006D77] text-white text-[16px] border-none">
               Show All Camps <FaArrowRight className="mt-0.5" />
             </button>
           </Link>

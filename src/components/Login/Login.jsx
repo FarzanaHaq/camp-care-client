@@ -3,10 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../../Context/AuthContext";
 import { saveUserInDb } from "../../api/utils";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import Header from "../../component/Header";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { signInUser, googleSignIn } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -16,6 +19,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const { email, password } = data;
     signInUser(email, password)
       .then((result) => {
@@ -25,10 +29,19 @@ const Login = () => {
           image: result?.user?.photoURL,
         };
         saveUserInDb(userData)
-          .then(() => navigate(location?.state || "/"))
-          .catch((err) => console.error(err.message));
+          .then(() => {
+            setLoading(false);
+            navigate(location?.state || "/");
+          })
+          .catch((err) => {
+            setLoading(false);
+            toast(err.message);
+          });
       })
-      .catch((err) => console.error(err.message));
+      .catch((err) => {
+        setLoading(false);
+        toast(err.message);
+      });
   };
 
   const handleGoogle = () => {
@@ -47,19 +60,27 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="px-5 pb-20">
       <Helmet>
         <title>Login</title>
       </Helmet>
-
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl flex justify-center mx-auto mt-20">
+      <div className="flex justify-center mx-auto mt-5">
+        <Header></Header>
+      </div>
+      <div>
+        <h1 className="text-center text-[30px] font-[700] mt-10">Login</h1>
+        <p className="text-center text-[16px] font-[500] mt-2 text-[#6F6F6F]">
+          Login today for affordable healthcare
+        </p>
+      </div>
+      <div className="card bg-base-100 max-w-[400px] shrink-0  border-1 border-gray-300 flex justify-center mx-auto mt-10">
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)} className="fieldset">
-            <label className="label">Email</label>
+            <label className="block font-[600] text-[15px]">Email</label>
             <input
               type="email"
               {...register("email", { required: "Email is required" })}
-              className="input"
+              className="w-full py-2 placeholder:text-gray-600 border-b-1 border-gray-300 focus:outline-none bg-white focus:placeholder-transparent"
               placeholder="Email"
             />
             {errors.email && (
@@ -68,11 +89,11 @@ const Login = () => {
               </p>
             )}
 
-            <label className="label">Password</label>
+            <label className="block font-[600] text-[15px]">Password</label>
             <input
               type="password"
               {...register("password", { required: "Password is required" })}
-              className="input"
+              className="w-full py-2 placeholder:text-gray-600 border-b-1 border-gray-300 focus:outline-none bg-white focus:placeholder-transparent"
               placeholder="Password"
             />
             {errors.password && (
@@ -80,12 +101,15 @@ const Login = () => {
                 {errors.password.message}
               </p>
             )}
-
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
-            <button type="submit" className="btn bg-sky-800 text-white mt-4">
-              Login
+            <button
+              type="submit"
+              className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 shadow-md bg-[#031B4E] rounded-md"
+            >
+              {loading ? (
+                <span className="loading loading-spinner loading-md"></span>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
 
@@ -124,7 +148,14 @@ const Login = () => {
           </button>
 
           <p className="text-center mt-2">
-            New to this site? <Link to={"/register"}>Please Register</Link>
+            New to this site?{" "}
+            <Link
+              to={"/register"}
+              className="text-[#031B4E] underline font-[500] text-[15px]"
+            >
+              {" "}
+              Register
+            </Link>
           </p>
         </div>
       </div>

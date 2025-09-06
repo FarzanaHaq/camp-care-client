@@ -42,24 +42,23 @@ const Available = () => {
 
       <div class="relative bg-[url('https://i.ibb.co.com/WvF3p36k/welison-franklin-1BcQAROQVXY-unsplash.jpg')] bg-cover bg-center">
         <div class="absolute inset-0 bg-black/20"></div>
-
         <div class="relative z-10">
           <div className="flex justify-center pt-5">
             <Header></Header>
           </div>
-          <h1 className="pt-30 pb-50 text-[50px] font-[700] text-white text-end pr-36">
+          <h1 className="pt-15 pb-10 lg:pt-30 lg:pb-50 text-[22px] lg:text-[50px] font-[700] text-white text-end pr-5 lg:pr-36">
             Medical Camps
           </h1>
         </div>
       </div>
 
       {/* Search + Sort + Layout */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between mb-10 mt-20">
+      <div className="lg:max-w-6xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between mb-10 mt-20">
         {/* Search */}
         <input
           type="text"
           placeholder="Search by name, location or date..."
-          className="input input-bordered w-full md:w-1/2"
+          className="input input-bordered lg:w-full"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -79,7 +78,7 @@ const Available = () => {
         {/* Layout Toggle */}
         <button
           onClick={() => setColumns(columns === 3 ? 2 : 3)}
-          className="btn btn-sm btn-outline"
+          className="btn btn-sm btn-outline hidden md:block lg:block"
         >
           {columns === 3 ? "Switch to 2 Columns" : "Switch to 3 Columns"}
         </button>
@@ -87,7 +86,7 @@ const Available = () => {
 
       {/* Cards */}
       <div
-        className={`grid grid-cols-1 lg:grid-cols-${columns} gap-8 max-w-6xl mx-auto`}
+        className={`grid grid-cols-1 lg:grid-cols-${columns} gap-8 max-w-6xl mx-auto px-5 lg:px-0`}
       >
         {filteredData.map((data) => (
           <div

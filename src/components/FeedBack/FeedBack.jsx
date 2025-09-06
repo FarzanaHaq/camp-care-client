@@ -13,7 +13,7 @@ export const FeedBack = () => {
   }, []);
 
   return (
-    <div className="bg-[#F2F4F7] py-30 mt-5 back-primary">
+    <div className="bg-[#F2F4F7] py-20 lg:py-30 mt-5 back-primary">
       <div className=" px-4 max-w-6xl mx-auto  ">
         <div className=" flex justify-center items-center gap-3 text-[#006D77] letter-primary">
           <FaHeartPulse></FaHeartPulse>
@@ -21,12 +21,12 @@ export const FeedBack = () => {
             Client Review's
           </h1>
         </div>
-        <h1 className="text-center text-[40px] font-[500] text-[#031B4E] my-3 letter-primary">
+        <h1 className="text-center text-[30px] lg:text-[40px] font-[500] text-[#031B4E] my-3 letter-primary">
           What Our Clients Say
         </h1>
-        <p className="text-center text-[18px] text-[#6F6F6F]">
+        <p className="text-center text-[18px] text-[#6F6F6F] max-w-[650px] mx-auto px-5">
           Real stories from real businesses discover how Soltrue’s insight and{" "}
-          <br /> strategies have helped companies grow with clarity and
+         strategies have helped companies grow with clarity and
           confidence.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
