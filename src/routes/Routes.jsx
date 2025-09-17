@@ -1,23 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
-import Home from "../components/Home/Home";
-import Login from "../components/Login/Login";
-import Register from "../components/Register/Register";
-import Available from "../components/Available/Available";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layouts/DashboardLayout";
-import AddCamp from "../components/AddCamp/AddCamp";
-import Details from "../components/Details/Details";
-import Profile from "../components/Profile/Profile";
-import { ManageCamps } from "../components/ManageCamps/ManageCamps";
-import { ManageRegistered } from "../components/ManageRegistered/ManageRegistered";
-import { Analytics } from "../components/Analytics/Analytics";
-import { MyCamps } from "../components/MyCamps/MyCamps";
-import { PaymentHistory } from "../components/PaymentHistory/PaymentHistory";
-import { UpdateProfile } from "../components/UpdateProfile/UpdateProfile";
-import { UpdateCamp } from "../components/UpdateCamp/UpdateCamp";
-import ErrorPage from "../components/ErrorPage/ErrorPage";
-import { AboutPage } from "../components/AboutPage/AboutPage";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Available from "../pages/Available";
+import { AboutPage } from "../pages/AboutPage";
+import AddCamp from "../dashboard/AddCamp";
+import Details from "../components/Details";
+import Profile from "../dashboard/Profile";
+import { Analytics } from "../dashboard/Analytics";
+import { MyCamps } from "../dashboard/MyCamps";
+import { PaymentHistory } from "../dashboard/PaymentHistory";
+import { UpdateProfile } from "../dashboard/UpdateProfile";
+import { UpdateCamp } from "../dashboard/UpdateCamp";
+import { ManageCamps } from "../dashboard/ManageCamps";
+import { ManageRegistered } from "../dashboard/ManageRegistered";
 
 export const router = createBrowserRouter([
   {
@@ -31,12 +30,17 @@ export const router = createBrowserRouter([
       },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
-      { path: "/avail", element: <Available /> },
-        { path: "/about", element: <AboutPage></AboutPage> },
+      {
+        path: "/avail",
+        element: <Available />,
+      },
+      { path: "/about", element: <AboutPage></AboutPage> },
       {
         path: "details/:id",
         loader: ({ params }) =>
-          fetch(`https://camp-server-lake.vercel.app/camp-details/${params.id}`),
+          fetch(
+            `https://camp-server-lake.vercel.app/camp-details/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <Details></Details>
@@ -117,10 +121,12 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-         {
+      {
         path: "/dashboard/update-camp/:id",
-         loader: ({ params }) =>
-          fetch(`https://camp-server-lake.vercel.app/camp-details/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://camp-server-lake.vercel.app/camp-details/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <UpdateCamp />

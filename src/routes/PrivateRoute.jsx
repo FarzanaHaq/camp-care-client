@@ -1,5 +1,5 @@
 import { use } from "react";
-import { useLocation } from "react-router";
+import { Navigate, useLocation } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 
 const PrivateRoute = ({ children }) => {
