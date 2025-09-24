@@ -33,7 +33,7 @@ export const About = () => {
       <div className="flex justify-center my-6">
         <img
           src="https://i.ibb.co.com/tTjwDyxV/about-one-img-1.jpg"
-          className="h-[400px]  lg:h-[830px] rounded-2xl"
+          className="h-[400px]  lg:h-[830px] rounded-2xl object-cover"
           alt=""
         />
       </div>

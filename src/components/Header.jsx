@@ -55,16 +55,20 @@ const Header = () => {
                 <NavLink to={"/"}>Home</NavLink>
               </li>
               <li>
-                <NavLink to={"/avail"}> Available Camps</NavLink>
+                <NavLink to={"/avail"}>Camps</NavLink>
+              </li>
+              {user ? (
+                <li>
+                  <NavLink to={"/login"}>Login</NavLink>
+                </li>
+              ) : (
+                <li onClick={() => signOutUser()}>Logout</li>
+              )}
+              <li>
+                <NavLink to={"/dashboard"}>Dashboard</NavLink>
               </li>
               <li>
                 <NavLink to={"/about"}> About</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/register"}> Join Us</NavLink>
-              </li>
-                 <li>
-                <NavLink to={"/dashboard"}>Dashboard</NavLink>
               </li>
             </ul>
           </div>
@@ -80,64 +84,80 @@ const Header = () => {
               </span>
             </div>
           </a>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 gap-5">
-              <li>
-                <NavLink
-                  to={"/"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 rounded-none text-[#006D77] font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
-                      : "font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to={"/avail"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 rounded-none text-[#006D77] font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
-                      : "font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
-                  }
-                >
-                  Available Camps
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to={"/about"}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "border-b-2 rounded-none text-[#006D77] font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
-                      : "font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
-                  }
-                >
-                  About
-                </NavLink>
-              </li>
-              {user ? (
-                ""
-              ) : (
-                <li>
-                  <NavLink
-                    to={"/register"}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "border-b-2 rounded-none text-sky-400 font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
-                        : "font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
-                    }
-                  >
-                    Join Us
-                  </NavLink>
-                </li>
-              )}
-            </ul>
-          </div>
         </div>
-
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 gap-1">
+            <li>
+              <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "border-b-2 rounded-none text-[#006D77] font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
+                    : "font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
+                }
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <details>
+                <summary className="font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none ml-3">
+                  Pages
+                </summary>
+                <ul className="p-2 w-40">
+                  <li>
+                    <NavLink
+                      to={"/avail"}
+                      className="font-[600] text-[13px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
+                    >
+                      Camps
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/about"}
+                      className="font-[600] text-[13px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
+                    >
+                      About
+                    </NavLink>
+                  </li>
+                  {user ? (
+                    <li>
+                      <NavLink
+                        to={"/avail"}
+                        onClick={() => signOutUser()}
+                        className="font-[600] text-[13px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
+                      >
+                        Logout
+                      </NavLink>
+                    </li>
+                  ) : (
+                    <li>
+                      <NavLink
+                        to={"/login"}
+                        className="font-[600] text-[13px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
+                      >
+                        Login
+                      </NavLink>
+                    </li>
+                  )}
+                </ul>
+              </details>
+            </li>
+            <li>
+              <NavLink
+                to={"/dashboard"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "border-b-2 rounded-none text-[#006D77] font-semibold text-[15px] shadow-none outline-none focus:shadow-none focus:outline-none"
+                    : "font-semibold text-[15px] text-gray-600 shadow-none outline-none focus:shadow-none focus:outline-none"
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          </ul>
+        </div>
         <div className="navbar-end lg:pr-5 gap-2">
           <div className="relative">
             <div className="flex flex-row items-center gap-3">

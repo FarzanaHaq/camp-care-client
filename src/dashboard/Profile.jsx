@@ -36,11 +36,11 @@ const Profile = () => {
       <p className="text-black text-[16px] font-[600] ml-2 mb-5">
         Dashboard <IoIosArrowForward className="inline" /> Profile
       </p>
-      <div className="lg:flex lg:justify-center lg:items-center lg:gap-10 lg:mt-15">
+      <div className="lg:flex lg:justify-center lg:items-center lg:gap-10 lg:mt-10">
         <div>
-          <div className=" lg:w-[400px] bg-white lg:h-[430px]">
-            <img alt="profile" src={newUser?.image} className="object-cover h-[200px]" />
-            <div className="px-5 lg:px-10">
+          <div className=" lg:w-[450px] bg-white py-10">
+            <img alt="profile" src={newUser?.image} className="object-cover h-[150px] rounded-full mx-auto" />
+            <div className="px-5 lg:px-10 pt-5">
               <p className="text-[20px] font-[600] text-center text-black">
                 My Profile
               </p>
@@ -56,7 +56,7 @@ const Profile = () => {
                   {newUser?.email}
                 </p>
               </div>
-              <div className="flex justify-center pt-6 pb-3 lg:pt-10">
+              <div className="flex justify-center pt-6 pb-1 lg:pt-10">
                 <Link to={"/dashboard/update-profile"}>
                   <button className="bg-[#006D77] px-10 py-2 text-[16px] cursor-pointer block mb-1 mt-2 text-white font-medium">
                     Update Profile
@@ -67,7 +67,7 @@ const Profile = () => {
           </div>
         </div>
         <div>
-          <div className="text-black lg:w-[400px] bg-white mt-5 py-5 lg:mt-0 lg:py-8">
+          <div className="text-black lg:w-[450px] bg-white mt-5 py-5 lg:mt-0 lg:pt-8 pb-13">
             <div className="px-5 lg:px-10">
               <p className="text-[20px] font-[600] text-center text-black">
                 Contact
@@ -88,7 +88,7 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="text-black lg:w-[400px] bg-white mt-5 py-5 lg:mt-10 lg:py-8">
+          <div className="text-black lg:w-[450px] bg-white mt-5 py-5 lg:pt-8 pb-14">
             <div className="px-5 lg:px-10">
               <p className="text-[20px] font-[600] text-center text-black">
                 Additional information:

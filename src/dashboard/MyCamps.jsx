@@ -3,7 +3,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import NewForm from "../Form/NewForm";
 import Swal from "sweetalert2";
-import { FaStar } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { MdOutlineRateReview } from "react-icons/md";
@@ -11,6 +10,7 @@ import { MdDelete } from "react-icons/md";
 import { AuthContext } from "../Context/AuthContext";
 import { Spinner } from "../Spinner/Spinner";
 import { IoIosArrowForward } from "react-icons/io";
+import FeedbackModal from "../Modal/FeedbackModal";
 
 const stripePromise = loadStripe(
   "pk_test_51Rl1cFRqsLeiCeWjk2BA4SQzSIKWNTVlLWuK4aZvE287GtLFQu4H2clGWiWkhdwuoscvW0ihrbICeje0ovgSc5c500uzgiGNZq"
@@ -113,11 +113,12 @@ export const MyCamps = () => {
       userName: userData?.userName,
       userEmail: userData?.userEmail,
     };
-    setLoading(false);
+
     const { data } = await axios.post(
       "https://camp-server-lake.vercel.app/feedback",
       feedback
     );
+
     toast.success("Feedback submitted successfully!");
   };
 
@@ -130,21 +131,23 @@ export const MyCamps = () => {
   }
 
   return (
-    <div className="bg-[#F2F4F7] pt-5 px-5 min-h-screen">
-      <p className="text-black text-[16px] font-[600] ml-2 mb-5">Dashboard <IoIosArrowForward className="inline" /> Registered camps</p>
-      <div className="bg-white px-8 py-8">
+    <div className="bg-[#F2F4F7] pt-5 px-5 lg:px-8 min-h-screen">
+      <p className="text-black text-[16px] font-[600] mb-5">
+        Dashboard <IoIosArrowForward className="inline" /> Registered camps
+      </p>
+      <div className="bg-white px-5 lg:px-8 py-8">
         <div className="lg:flex lg:justify-between lg:items-center">
           <div>
-            <h1 className="text-[25px] font-[700] text-black">Camps</h1>
-            <p className="font-[600] text-black">
+            <h1 className="text-[20px] lg:text-[25px] font-[700] text-black">Camps</h1>
+            <p className="text-[14px] lg:text-[16px] font-[600] text-black">
               Manage the camps you registered at
             </p>
           </div>
-          <div className="flex justify-end items-center">
+          <div className="flex lg:justify-end items-center mt-5">
             <input
               type="text"
               placeholder="Search by title, name, payment status..."
-              className="input input-bordered w-full max-w-xs text-black bg-white border-2 border-gray-300 ml-3"
+              className="input input-bordered lg:w-[320px] text-black bg-white border-2 border-gray-300 lg:ml-3"
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
@@ -155,8 +158,8 @@ export const MyCamps = () => {
         </div>
 
         {paginatedData.length > 0 ? (
-          <div className="overflow-x-auto py-10">
-            <table className="table">
+          <div className="overflow-x-auto py-5 lg:py-10">
+            <table className="table ">
               <thead>
                 <tr className="text-black border-b-2 border-gray-200">
                   <th>Title</th>
@@ -262,55 +265,15 @@ export const MyCamps = () => {
           </div>
         </div>
       </dialog>
-
-      {/* Modal for Feedback */}
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box bg-sky-100">
-          <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-10">
-            <h2 className="text-2xl font-semibold mb-4 text-center text-black">
-              Give Feedback
-            </h2>
-            <div className="flex justify-center mb-4">
-              {[...Array(5)].map((_, index) => {
-                const starValue = index + 1;
-                return (
-                  <button
-                    key={starValue}
-                    type="button"
-                    onClick={() => setRating(starValue)}
-                    onMouseEnter={() => setHovered(starValue)}
-                    onMouseLeave={() => setHovered(null)}
-                  >
-                    <FaStar
-                      size={28}
-                      className={`transition-colors ${
-                        starValue <= (hovered || rating)
-                          ? "text-yellow-400"
-                          : "text-gray-300"
-                      }`}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-            <textarea
-              className="textarea textarea-bordered w-full mb-4 bg-sky-100 text-gray-800"
-              placeholder="Write your feedback here..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            ></textarea>
-            <button
-              className="btn bg-sky-300 w-full border-none"
-              onClick={handleSubmit}
-            >
-              {loading ? "Submit" : "Submission done!"}
-            </button>
-          </div>
-        </div>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
+      <FeedbackModal
+        setRating={setRating}
+        setHovered={setHovered}
+        hovered={hovered}
+        rating={rating}
+        comment={comment}
+        setComment={setComment}
+        handleSubmit={handleSubmit}
+      ></FeedbackModal>
     </div>
   );
 };

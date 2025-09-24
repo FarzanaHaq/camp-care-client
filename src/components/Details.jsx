@@ -9,6 +9,7 @@ import axios from "axios";
 import { Spinner } from "../Spinner/Spinner";
 import Header from "../components/Header";
 import { AuthContext } from "../Context/AuthContext";
+import TitleBanner from "./cards/TitleBanner";
 
 const Details = () => {
   const { id } = useParams();
@@ -50,18 +51,7 @@ const Details = () => {
 
   return (
     <div className="bg-[#F2F4F7] ">
-      <div class="relative bg-[url('https://i.ibb.co.com/WvF3p36k/welison-franklin-1BcQAROQVXY-unsplash.jpg')] bg-cover bg-center">
-        <div class="absolute inset-0 bg-black/20"></div>
-
-        <div class="relative z-10">
-          <div className="flex justify-center pt-5">
-            <Header></Header>
-          </div>
-          <h1 className="pt-15 pb-10  lg:pt-30 lg:pb-50 text-[22px] lg:text-[50px] font-[700] text-white text-end pr-5 lg:pr-36">
-            Book Online
-          </h1>
-        </div>
-      </div>
+     <TitleBanner text="Book Online"></TitleBanner>
       <div className="py-10
        lg:py-30 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden flex flex-col lg:flex-row">

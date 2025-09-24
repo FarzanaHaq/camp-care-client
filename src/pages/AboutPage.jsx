@@ -1,21 +1,11 @@
+import TitleBanner from "../components/cards/TitleBanner";
 import Header from "../components/Header";
 import { FaCalendarDays } from "react-icons/fa6";
 
 export const AboutPage = () => {
   return (
     <div className="bg-[#F2F4F7] back-primary pb-30">
-      <div class="relative bg-[url('https://i.ibb.co.com/WvF3p36k/welison-franklin-1BcQAROQVXY-unsplash.jpg')] bg-cover bg-center">
-        <div class="absolute inset-0 bg-black/20"></div>
-
-        <div class="relative z-10">
-          <div className="flex justify-center pt-5">
-            <Header></Header>
-          </div>
-          <h1 className="pt-15 pb-10 text-[20px]  lg:pt-30 lg:pb-50 lg:text-[50px] font-[700] text-white text-end pr-10 lg:pr-36">
-            About Us
-          </h1>
-        </div>
-      </div>
+ <TitleBanner text="About Us"></TitleBanner>
       <div className="max-w-6xl mx-auto mt-10 lg:mt-20 px-5">
         <div className="relative">
           <img

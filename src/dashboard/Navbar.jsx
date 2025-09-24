@@ -2,6 +2,8 @@ import { use } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { AuthContext } from "../Context/AuthContext";
 import avatarImg from "../assets/placeholder.jpg";
+import { FaHouseChimney } from "react-icons/fa6";
+import { FaBell } from "react-icons/fa";
 import { Link } from "react-router";
 
 const Navbar = () => {
@@ -49,6 +51,9 @@ const Navbar = () => {
               <li>
                 <Link to={"payment-history"}>Payment history</Link>
               </li>
+               <li>
+                <Link to={"/"}>Home</Link>
+              </li>
             </ul>
           </div>
           <a className="btn btn-ghost text-xl"></a>
@@ -57,7 +62,9 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1"></ul>
         </div>
         <div className="navbar-end">
-          <IoMdNotificationsOutline className="text-black text-[25px] mr-3" />
+           <Link to={"/"}>  <FaHouseChimney className="text-black text-[22px] mr-3" /></Link>
+        
+          <IoMdNotificationsOutline  className="text-black text-[25px] mr-3 mt-0.5" />
           <div className="mr-2">
             <div
               tabIndex={0}

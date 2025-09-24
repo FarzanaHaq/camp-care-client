@@ -1,7 +1,5 @@
-import React from "react";
 import { use } from "react";
 import { useEffect } from "react";
-
 import { useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { Spinner } from "../Spinner/Spinner";
@@ -13,12 +11,11 @@ export const PaymentHistory = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    
     if (!user?.email) return;
-    setLoading(true)
+    setLoading(true);
     fetch(
       `https://camp-server-lake.vercel.app/all-payment?email=${user?.email}`,
       {
@@ -28,7 +25,7 @@ export const PaymentHistory = () => {
       .then((res) => res.json())
       .then((data) => {
         setMyData(data);
-        setLoading(false)
+        setLoading(false);
       });
   }, [user?.email]);
 
@@ -54,26 +51,30 @@ export const PaymentHistory = () => {
     setCurrentPage(1);
   }, [searchTerm]);
 
-if (loading) {
-  return <div>
-    <Spinner></Spinner>
-  </div>
-}
+  if (loading) {
+    return (
+      <div>
+        <Spinner></Spinner>
+      </div>
+    );
+  }
 
   return (
-    <div className="bg-[#F2F4F7] pt-5 min-h-screen px-5">
-       <p className="text-black text-[16px] font-[600] ml-2 mb-5">Dashboard <IoIosArrowForward className="inline" /> Payment history</p>
+    <div className="bg-[#F2F4F7] pt-5 min-h-screen px-5 lg:px-8">
+      <p className="text-black text-[16px] font-[600] mb-5">
+        Dashboard <IoIosArrowForward className="inline" /> Payment history
+      </p>
       <div className="mx-auto max-w-7xl px-10 text-black bg-white pt-5">
-        <div className="flex justify-between items-end">
+        <div className="lg:flex lg:justify-between lg:items-end">
           <div>
-            <h1 className="text-[25px] font-[700] text-black">
+            <h1 className="text-[20px] lg:text-[25px] font-[700] text-black">
               Payment History
             </h1>
-            <p className="font-[600] text-black">
+            <p className="text-[14px] lg:text-[16px] font-[600] text-black">
               Keep up with your spending's
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-5 lg:mt-0">
             {/* Search Input */}
             <input
               type="text"
@@ -164,8 +165,8 @@ if (loading) {
             </div>
           </>
         ) : (
-          <div className="text-center text-sky-800 p-20 font-bold text-2xl min-h-screen">
-            Please add data to view.
+          <div className="text-center text-sky-800 py-15 lg:p-20 font-bold text-2xl min-h-[370px]">
+            Pay for camps to see payment history
           </div>
         )}
       </div>

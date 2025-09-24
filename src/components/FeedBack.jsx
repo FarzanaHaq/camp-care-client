@@ -4,14 +4,26 @@ import { TitleCard } from "./cards/TitleCard";
 
 export const FeedBack = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://camp-server-lake.vercel.app/all-feedback")
       .then((response) => response.json())
       .then((fetchedData) => {
         setData(fetchedData);
       });
-  }, []);
+
+    setLoading(false);
+  }, [data]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#F2F4F7] py-20 lg:py-5 mt-5 back-primary">

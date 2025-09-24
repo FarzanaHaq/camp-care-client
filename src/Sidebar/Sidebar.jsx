@@ -9,18 +9,14 @@ import { AuthContext } from "../Context/AuthContext";
 const Sidebar = () => {
   const { signOutUser } = use(AuthContext);
   const [isActive, setActive] = useState(false);
-  const [role, isRoleLoading] = useRole();
+  const [role] = useRole();
   const navigate = useNavigate();
 
-  // Sidebar Responsive Handler
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
   return (
     <>
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed hidden lg:flex lg:flex-col lg:justify-between  overflow-x-hidden bg-white w-64 space-y-6 px-2 py-3 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed hidden lg:flex lg:flex-col lg:justify-between shadow-xl  overflow-x-hidden bg-white w-64 space-y-6 px-2 py-3 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >

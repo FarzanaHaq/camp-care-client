@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { FaHeartPulse } from "react-icons/fa6";
 import { Link } from "react-router";
 import Header from "../components/Header";
+import TitleBanner from "../components/cards/TitleBanner";
 const Available = () => {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
@@ -38,19 +39,7 @@ const Available = () => {
       <Helmet>
         <title>Available Camps</title>
       </Helmet>
-
-      <div class="relative bg-[url('https://i.ibb.co.com/WvF3p36k/welison-franklin-1BcQAROQVXY-unsplash.jpg')] bg-cover bg-center">
-        <div class="absolute inset-0 bg-black/20"></div>
-        <div class="relative z-10">
-          <div className="flex justify-center pt-5">
-            <Header></Header>
-          </div>
-          <h1 className="pt-15 pb-10 lg:pt-30 lg:pb-50 text-[22px] lg:text-[50px] font-[700] text-white text-end pr-5 lg:pr-36">
-            Medical Camps
-          </h1>
-        </div>
-      </div>
-
+      <TitleBanner text="Available Camps"></TitleBanner>
       {/* Search + Sort + Layout */}
       <div className="lg:max-w-6xl mx-auto flex flex-col md:flex-row gap-4 items-center justify-between mb-10 mt-20">
         {/* Search */}
