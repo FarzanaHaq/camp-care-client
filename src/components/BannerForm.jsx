@@ -17,13 +17,15 @@ const BannerForm = ({ user, setFormData, formData }) => {
   };
 
   return (
-    <div className="">
-      
-      <div className="bg-[#006D77] back-card w-[340px]  lg:w-6xl mx-auto p-5 lg:p-15 rounded-2xl lg:absolute lg:top-200 lg:left-25 ">
-        <h1 className="text-white text-[25px] lg:text-[40px] font-[600] lg:leading-12 letter-primary lg:w-[500px]">
+    <div>
+      <div className="bg-[#006D77] back-card w-[340px] md:w-[730px]  lg:w-6xl mx-auto p-5 md:p-10 lg:p-15 rounded-2xl md:absolute md:top-160 md:left-5  lg:top-200 lg:left-25 ">
+        <h1 className="text-white text-[25px] lg:text-[40px] font-[600] lg:leading-12 letter-primary md:w-[350px] lg:w-[500px]">
           Redefining Medical Camps with Humanity
         </h1>
-        <p className="text-white text-[16px] font-[500] my-5 letter-sec w-[240px] lg:w-[450px]">
+        <p
+          className="text-white text-[16
+        px] font-[500] my-5 letter-sec w-[240px] lg:w-[450px]"
+        >
           Speak with our staff within 30 minutes for book a camp. All inquiries
           are 100% private with no obligation.
         </p>
@@ -35,7 +37,7 @@ const BannerForm = ({ user, setFormData, formData }) => {
           </Link>
         </div>
       </div>
-      <div className="lg:absolute lg:top-165 lg:right-40 lg:z-10 mt-5">
+      <div className="md:absolute md:top-130 lg:top-165 md:right-10 lg:right-40 lg:z-10 mt-5">
         <div className=" w-[340px] lg:w-[500px] mx-auto p-5 lg:px-13 lg:py-12 bg-white back-card rounded-xl shadow-2xl">
           <h2 className=" text-[25px] lg:text-[30px] font-[600] mb-4 text-gray-800 letter-primary">
             Get Started Today

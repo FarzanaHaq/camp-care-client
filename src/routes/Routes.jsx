@@ -11,12 +11,12 @@ import AddCamp from "../dashboard/AddCamp";
 import Details from "../components/Details";
 import Profile from "../dashboard/Profile";
 import { Analytics } from "../dashboard/Analytics";
-import { MyCamps } from "../dashboard/MyCamps";
-import { PaymentHistory } from "../dashboard/PaymentHistory";
 import { UpdateProfile } from "../dashboard/UpdateProfile";
 import { UpdateCamp } from "../dashboard/UpdateCamp";
 import { ManageCamps } from "../dashboard/ManageCamps";
 import { ManageRegistered } from "../dashboard/ManageRegistered";
+import PaymentHistory from "../dashboard/paymentHistory/PaymentHistory";
+import MyCamps from "../dashboard/myCamps/MyCamps";
 
 export const router = createBrowserRouter([
   {
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
         index: true,
         element: (
           <PrivateRoute>
-            <Profile />
+           <MyCamps></MyCamps>
           </PrivateRoute>
         ),
       },
@@ -98,10 +98,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "my-camps",
+        path: "profile",
         element: (
           <PrivateRoute>
-            <MyCamps />
+         <Profile></Profile>
           </PrivateRoute>
         ),
       },
@@ -109,7 +109,7 @@ export const router = createBrowserRouter([
         path: "payment-history",
         element: (
           <PrivateRoute>
-            <PaymentHistory />
+            <PaymentHistory></PaymentHistory>
           </PrivateRoute>
         ),
       },

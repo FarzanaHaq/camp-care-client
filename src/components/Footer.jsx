@@ -1,68 +1,149 @@
-import React from 'react';
-import { Link } from 'react-router';
+import { Link } from "react-router";
+import { MdLocationPin } from "react-icons/md";
+import { FaArrowRight, FaHandHoldingMedical } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
 
 const Footer = () => {
-    return (
-        <div>
-           <footer className="footer sm:footer-horizontal bg-white back-primary text-neutral-content p-5">
-        <aside className="pl-15">
-          <img
-            className="w-30 h-30 bg-white mt-1"
-            src="https://i.ibb.co/Ng0yTFYQ/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector.jpg"
-            alt="logo"
-          />
-          <Link to={"/"}>  <p className="text-gray-600 text-[16px] font-medium ml-5">
-           Home
-          </p></Link>
-        
-         <Link to={"/about"}>  <p className="text-gray-600 text-[16px] font-medium ml-5">
-         About Us
-          </p></Link>
-          <p className="text-gray-600 text-[16px] font-medium ml-5">
-            Contact Us
-          </p>
-        </aside>
-        <nav className="ml-40 mt-35">
-          <h6 className="footer-title text-gray-800">Social</h6>
-          <div className="grid grid-flow-col gap-4">
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current text-sky-500"
-              >
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-              </svg>
-            </a>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current text-red-600"
-              >
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-              </svg>
-            </a>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current text-blue-600"
-              >
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-              </svg>
-            </a>
+  return (
+    <footer className="">
+      <div className="bg-[#F2F4F7] pb-10 lg:pb-20 ">
+        <div className="bg-[#FFF3EA] max-w-7xl py-5  lg:py-10 lg:pl-10 lg:pr-15 lg:flex lg:justify-between lg:items-center mx-auto">
+          <div>
+            <div className="flex items-center justify-center lg:justify-start">
+              <img
+                className="w-15 h-15 lg:w-20 lg:h-20 mt-1 rounded-full"
+                src="https://i.ibb.co.com/kgsvkX8M/healthcare-medical-logo-icon-for-ambulance-hospital-pharmacy-symbol-vector-removebg-preview.png"
+                alt=""
+              />
+              <h1 className="text-[20px] lg:text-[25px] font-[700] text-[#031B4E] ">
+                CampCare
+              </h1>
+            </div>
+            <div className="text-[25px] lg:text-[60px] font-[600]  lg:font-[700] text-[#031B4E] w-[300px] lg:w-[500px] pl-5 text-center mx-auto lg:text-start">
+              Subscribe To Our Newsletter
+            </div>
           </div>
-        </nav>
-      </footer>
+          <div className="lg:flex lg:items-center gap-5 mt-5">
+            <div className="flex justify-center">
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Enter Email"
+                className="border-1 lg:border-2 border-[#031B4E] py-1 lg:py-3 px-5 rounded-full lg:w-[350px] placeholder:text-gray-800 placeholder:font-[500] placeholder:text-[14px] lg:placeholder:text-[16px]"
+              />
+            </div>
+            <div className="flex justify-center pb-5 lg:pb-0">
+              <button className=" bg-[#031B4E] text-white text-[14px]  lg:text-[16px] font-[500] border-none rounded-full px-7 py-2  lg:py-3.5 flex items-center gap-3 mt-3 lg:mt-0">
+                Subscribe Now
+                <FaPlus className="mt-0.5" />
+              </button>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+      <div className="bg-[#031B4E] md:flex md:justify-between md:items-start text-white p-10 lg:p-15 ">
+        <div>
+          <h2 className="mb-10 text-[23px] font-[600]">Contact</h2>
+          <div className="flex items-center gap-5 mb-5">
+            <MdLocationPin className="border-1 border-white rounded-full p-2 text-[25px] w-10 h-10 mt-1" />
+            <div>
+              <p className="text-[16px]">Address</p>
+              <p className="text-[18px] font-[600] mt-2">66 Broklyant, India</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-5 mb-5">
+            <MdLocationPin className="border-1 border-white rounded-full p-2 text-[25px] w-10 h-10 mt-1" />
+            <div>
+              <p className="text-[16px]">Phone Number</p>
+              <p className="text-[18px] font-[600] mt-2">012 345 678 9101</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-5">
+            <MdLocationPin className="border-1 border-white rounded-full p-2 text-[25px] w-10 h-10 mt-1" />
+            <div>
+              <p className="text-[16px]">Email</p>
+              <p className="text-[20px] font-[600] mt-2">abcd@gmail.com</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 className="text-[23px] font-[600] mt-10 md:mt-0 mb-10">
+            Department
+          </h2>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            <FaHandHoldingMedical /> Cardiology
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            <FaHandHoldingMedical /> Orthopedic
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            <FaHandHoldingMedical /> Diabetes
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            <FaHandHoldingMedical /> Dental
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            <FaHandHoldingMedical /> Cancer
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            <FaHandHoldingMedical /> psychiatrist
+          </p>
+        </div>
+        <div>
+          <h2 className="text-[23px] font-[600] mt-10 md:mt-0 mb-5 lg:mb-10">
+            Social Media
+          </h2>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Facebook
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Twitter
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Linkedin
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Instagram
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Youtube
+          </p>
+        </div>
+        <div className="">
+          <h2 className="text-[23px] font-[600] mt-10 md:mt-0 mb-5 lg:mb-10">
+            Pages
+          </h2>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Home
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Camps
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            About Us
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Dashboard
+          </p>
+          <p className="text-[18px] text-gray-200 mt-2 flex items-center gap-2">
+            Login
+          </p>
+        </div>
+      </div>
+      <div className="p-10 lg:flex lg:justify-between lg:items-center">
+        <h1 className="text-[18px] text-gray-600">
+          Copyright ©2025 <span className="text-[#006D77]">CampCare</span>. All
+          rights reserved.
+        </h1>
+        <div className="flex items-center gap-5 mt-5 lg:mt-0">
+          <p className="text-[18px] text-gray-600">Terms & Condition</p>
+          <p className="text-[18px] text-gray-600">Privacy Policy</p>
+          <p className="text-[18px] text-gray-600">Contact Us</p>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

@@ -9,10 +9,10 @@ const CustomerMenu = () => {
       <MenuItem
         icon={BsFingerprint}
         label="Registered Camps"
-        address="my-camps"
+        address="/dashboard"
       />
       <MenuItem icon={BsGraphUp} label="Analytics" address="analytics" />
-      <MenuItem icon={FcSettings} label="Profile" address="/dashboard" />
+      <MenuItem icon={FcSettings} label="Profile" address="profile" />
       <MenuItem
         icon={AiFillCreditCard}
         label="Payment History"

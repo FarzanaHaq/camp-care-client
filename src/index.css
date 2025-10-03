@@ -28,3 +28,13 @@
     @apply text-[#6F6F6F];
   }
 }
+
+/* Default bullet color */
+.swiper-pagination-bullet {
+  background-color: #1F2937 !important; /* Tailwind's gray-300 */
+}
+
+/* Active bullet color */
+.swiper-pagination-bullet-active {
+  background-color: #006D77 !important; /* Your custom teal */
+}

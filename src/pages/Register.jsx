@@ -148,7 +148,7 @@ const Register = () => {
         <div className="flex justify-center mt-5">
           <button
             onClick={handleGoogle}
-            className="btn bg-white text-black border-[#e5e5e5]"
+            className="btn bg-white text-black border-[#e5e5e5] w-full"
           >
             <svg
               aria-label="Google logo"

@@ -8,6 +8,7 @@ const ServiceCard = ({image, title, description}) => {
               src={image}
               className="w-[70px]"
               alt=""
+              loading='lazy'
             />
           </div>
           <h1>

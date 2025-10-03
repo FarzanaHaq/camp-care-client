@@ -5,7 +5,7 @@ const Services = () => {
   return (
     <div className="px-5 max-w-6xl mx-auto mt-20">
       <div className="lg:flex lg:items-center">
-        <div className="px-5 flex-1/2">
+        <div className="px-3 lg:px-5 flex-1/2">
           <div className="text-[#006D77] letter-primary flex items-center gap-2">
             <FaHeartPulse></FaHeartPulse>
             <p className="uppercase font-[500] text-[18px]">Our Services</p>
@@ -20,7 +20,7 @@ const Services = () => {
           since.
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5 lg:mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 lg:mt-10">
         <ServiceCard
           image="https://i.ibb.co.com/5Xmqrhb5/Hearth.png"
           title="Cardiology"

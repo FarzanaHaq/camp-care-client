@@ -36,7 +36,7 @@ export const ShowCamps = () => {
           description="98% of patients report cheap and good quality treatments in our
           program, Experience the difference yourself."
         ></TitleCard>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-10 mb-10 lg:mb-20 px-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-10 mb-10 lg:mb-20 px-5">
           {data.length > 0
             ? data?.slice(0, 6).map((data) => (
                 <div className="card bg-white rounded-none shadow-2xl back-card">
@@ -44,7 +44,8 @@ export const ShowCamps = () => {
                     <img
                       className="h-[200px] w-[400px] object-cover object-center"
                       src={data.image}
-                      alt="Shoes"
+                      alt="Camps"
+                        loading='lazy'
                     />
                   </figure>
                   <div className="card-body pb-5">
